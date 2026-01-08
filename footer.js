@@ -1,4 +1,3 @@
-<script>
 document.addEventListener("DOMContentLoaded", function () {
   // Home page hero title tweak
   if (location.pathname === "/" || location.pathname.includes("index.php")) {
@@ -12,4 +11,3 @@ document.addEventListener("DOMContentLoaded", function () {
     if (p) p.textContent = "Southern Key Realty • White Glove Service • Treasure Coast Expert";
   }
 });
-</script>
