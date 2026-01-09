@@ -1,0 +1,131 @@
+<style>
+    .area-grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 25px;
+        text-align: left;
+        margin-top: 20px;
+    }
+    .area-category-block {
+        background: #fdfdfd;
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid #eee;
+        display: flex;
+        flex-direction: column;
+    }
+    .area-category-block h4 {
+        border-bottom: 2px solid #2c3e50;
+        padding-bottom: 8px;
+        margin-bottom: 12px;
+        color: #2c3e50;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+    }
+    .area-list { list-style: none; padding: 0; margin: 0; }
+    .area-list li { padding: 5px 0; transition: transform 0.2s; display: flex; align-items: center; }
+    .area-list li:hover { transform: translateX(5px); }
+    .area-list i { font-size: 12px; margin-right: 8px; width: 15px; text-align: center; }
+    .area-list a { color: #444; text-decoration: none; font-size: 0.9rem; flex: 1; }
+    .area-list a:hover { color: #007bff; font-weight: 500; }
+    .filter-search {
+        max-width: 500px;
+        margin: 20px auto 30px auto;
+        padding: 12px 25px;
+        border: 1px solid #ccc;
+        border-radius: 30px;
+        font-size: 1rem;
+        display: block;
+        width: 100%;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+    .city-variation-note {
+        font-size: 0.8rem;
+        color: #888;
+        font-style: italic;
+        margin-top: -15px;
+        margin-bottom: 25px;
+    }
+</style>
+
+<div class="p-t-5 p-b-5 background-white">
+    <div class="container">
+        <h1 class="center fw-300">Explore the Treasure Coast</h1>
+        <p class="center text-muted">Meticulous precision for every neighborhood from Fort Pierce to Hobe Sound.</p>
+        
+        <input type="text" id="areaSearch" class="filter-search" placeholder="Search by neighborhood, city, or zip code...">
+        <p class="center city-variation-note">Capturing all listing variations across St. Lucie and Martin Counties for complete accuracy.</p>
+
+        <div class="area-grid-container" id="areaGrid">
+            
+            <div class="area-category-block">
+                <h4>Main City & County Hubs</h4>
+                <ul class="area-list">
+                    <li><i class="fa fa-globe text-primary"></i> <a href="/areas/St_Lucie_County/fl">St. Lucie County Master Hub</a></li>
+                    <li><i class="fa fa-globe text-primary"></i> <a href="/areas/Martin_County/fl">Martin County Master Hub</a></li>
+                    <li><i class="fa fa-star text-primary"></i> <a href="/areas/Port_Saint_Lucie/fl">Port Saint Lucie (Primary)</a></li>
+                    <li><i class="fa fa-link text-muted"></i> <a href="/areas/Port_St._Lucie/fl">Port St. Lucie (Official)</a></li>
+                    <li><i class="fa fa-link text-muted"></i> <a href="/areas/Port_St_Lucie/fl">Port St Lucie (Active)</a></li>
+                    <li><i class="fa fa-building text-muted"></i> <a href="/areas/Saint_Lucie_West/fl">Saint Lucie West Portal</a></li>
+                </ul>
+            </div>
+
+            <div class="area-category-block">
+                <h4>West PSL & Master-Plans</h4>
+                <ul class="area-list">
+                    <li><i class="fa fa-map-marker text-muted"></i> <a href="/areas/7800/fl">Riverland / Tradition South</a></li>
+                    <li><i class="fa fa-map-marker text-muted"></i> <a href="/areas/7600/fl">PGA Village (PSL)</a></li>
+                    <li><i class="fa fa-map-marker text-muted"></i> <a href="/areas/7400/fl">Southwest PSL / Wylder</a></li>
+                    <li><i class="fa fa-map-marker text-muted"></i> <a href="/areas/7500/fl">St. Lucie West (Gated)</a></li>
+                    <li><i class="fa fa-map-marker text-muted"></i> <a href="/areas/7370/fl">Torino & St. James</a></li>
+                    <li><i class="fa fa-map-marker text-muted"></i> <a href="/areas/7300/fl">Northwest St. Lucie County</a></li>
+                </ul>
+            </div>
+
+            <div class="area-category-block">
+                <h4>Central & East Port St. Lucie</h4>
+                <ul class="area-list">
+                    <li><i class="fa fa-map-marker text-muted"></i> <a href="/areas/7740/fl">West Becker / Woodland Trails</a></li>
+                    <li><i class="fa fa-map-marker text-muted"></i> <a href="/areas/7750/fl">East Becker / Veranda</a></li>
+                    <li><i class="fa fa-map-marker text-muted"></i> <a href="/areas/7220/fl">South Bend & Becker</a></li>
+                    <li><i class="fa fa-map-marker text-muted"></i> <a href="/areas/7710/fl">Oak Hammock / Del Rio</a></li>
+                    <li><i class="fa fa-map-marker text-muted"></i> <a href="/areas/7170/fl">Floresta Corridor</a></li>
+                    <li><i class="fa fa-map-marker text-muted"></i> <a href="/areas/7180/fl">Sandpiper Bay</a></li>
+                    <li><i class="fa fa-map-marker text-muted"></i> <a href="/areas/7270/fl">Bayshore / Floresta</a></li>
+                </ul>
+            </div>
+
+            <div class="area-category-block">
+                <h4>Fort Pierce & The Beaches</h4>
+                <ul class="area-list">
+                    <li><i class="fa fa-map-marker text-muted"></i> <a href="/areas/7010/fl">Hutchinson Island (South)</a></li>
+                    <li><i class="fa fa-map-marker text-muted"></i> <a href="/areas/7020/fl">North Hutchinson Island</a></li>
+                    <li><i class="fa fa-map-marker text-muted"></i> <a href="/areas/7030/fl">Indrio / Seagrove</a></li>
+                    <li><i class="fa fa-map-marker text-muted"></i> <a href="/areas/7040/fl">Lakewood Park</a></li>
+                    <li><i class="fa fa-map-marker text-muted"></i> <a href="/areas/7100/fl">Gator Trace / South FP</a></li>
+                    <li><i class="fa fa-map-marker text-muted"></i> <a href="/areas/7070/fl">Historic Hillcrest</a></li>
+                </ul>
+            </div>
+
+            <div class="area-category-block">
+                <h4>Martin County & Stuart</h4>
+                <ul class="area-list">
+                    <li><i class="fa fa-map-marker text-muted"></i> <a href="/areas/1_-_Hutchinson_Island_-_Martin_County/fl">Hutchinson Island (Martin Co)</a></li>
+                    <li><i class="fa fa-map-marker text-muted"></i> <a href="/areas/5_-_Sewalls_Point/fl">Sewall's Point</a></li>
+                    <li><i class="fa fa-map-marker text-muted"></i> <a href="/areas/9_-_Palm_City/fl">Palm City</a></li>
+                    <li><i class="fa fa-map-marker text-muted"></i> <a href="/areas/10_-_Palm_City_West-Indiantown/fl">Palm City West / Indiantown</a></li>
+                    <li><i class="fa fa-map-marker text-muted"></i> <a href="/areas/6_-_Stuart-Rocky_Point/fl">Stuart - Rocky Point</a></li>
+                    <li><i class="fa fa-map-marker text-muted"></i> <a href="/areas/3_-_Jensen_Beach-Stuart_-_North_of_Roosevelt_Br/fl">Jensen Beach / North Stuart</a></li>
+                    <li><i class="fa fa-map-marker text-muted"></i> <a href="/areas/8_-_Stuart_-_North_of_Indian_St/fl">Stuart - North of Indian St</a></li>
+                    <li><i class="fa fa-map-marker text-muted"></i> <a href="/areas/7_-_Stuart_-_South_of_Indian_St/fl">Stuart - South of Indian St</a></li>
+                    <li><i class="fa fa-map-marker text-muted"></i> <a href="/areas/12_-_Stuart_-_Southwest/fl">Stuart - Southwest</a></li>
+                    <li><i class="fa fa-map-marker text-muted"></i> <a href="/areas/14_-_Hobe_Sound-Stuart_-_South_of_Cove_Rd/fl">Hobe Sound / South of Cove Rd</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+
