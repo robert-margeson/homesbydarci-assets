@@ -187,3 +187,63 @@ h1, h2, h3, h4, h5, h6,
         display: none !important;
     }
 }
+
+/* --- FIX: CENTERED HEADER LAYOUT (CHAMPION TEMPLATE) --- */
+@media (min-width: 992px) {
+    /* 1. Force the Header Container to Grow vertically */
+    #header {
+        height: auto !important;
+        padding: 20px 0 !important;
+    }
+
+    #header .container .row-flex {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        height: auto !important;
+    }
+
+    /* 2. Reset & Center the Logo */
+    #primary-logo {
+        float: none !important;
+        display: block !important;
+        margin: 0 auto 20px auto !important; /* Add space below logo */
+        position: static !important;
+        text-align: center !important;
+        width: 100% !important;
+        max-width: none !important;
+    }
+    
+    #primary-logo a {
+        display: inline-block !important;
+    }
+
+    #primary-logo img {
+        max-height: 90px !important; /* Make logo nice and big */
+        width: auto !important;
+        display: block !important;
+    }
+
+    /* 3. Reset & Center the Navigation */
+    .nav-primary-wrapper {
+        float: none !important;
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+        margin-top: 5px !important;
+    }
+
+    .nav-primary {
+        float: none !important;
+        display: inline-flex !important;
+        justify-content: center !important;
+        width: auto !important;
+    }
+    
+    /* 4. Hide Clutter (Login/Social icons on the sides) */
+    .column-end, 
+    #header .list-inline {
+        display: none !important; 
+    }
+}
