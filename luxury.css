@@ -1,5 +1,8 @@
-/* --- LUXURY THEME OVERHAUL --- */
+/* 1. LOAD FONTS (Correct CSS Syntax) */
+/* This loads the Luxury Serif (Cormorant) and Clean Sans (Inter) fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
+/* --- GLOBAL VARIABLES & COLORS --- */
 :root {
     --primary-color: #000000;       /* Deep Black */
     --accent-color: #c5a059;        /* Luxury Gold */
@@ -9,13 +12,14 @@
     --font-sans: 'Inter', sans-serif;
 }
 
-/* 2. TYPOGRAPHY OVERRIDES (Force Serif on Headers) */
+/* --- 2. TYPOGRAPHY OVERRIDES --- */
 body {
     font-family: var(--font-sans);
     color: var(--text-color);
     line-height: 1.6;
 }
 
+/* Force Serif on Headers */
 h1, h2, h3, h4, h5, h6, 
 .widgettitle, 
 .content-title h1,
@@ -27,7 +31,7 @@ h1, h2, h3, h4, h5, h6,
     letter-spacing: 1px;
 }
 
-/* Force the Hero Text specifically to be thinner/elegant */
+/* Force Hero Text to be elegant */
 #home-bodycontent .hero-wrapper h1,
 #home-bodycontent .hero-tagline {
     font-family: var(--font-serif) !important;
@@ -35,36 +39,129 @@ h1, h2, h3, h4, h5, h6,
     text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
-/* 3. HEADER & NAVIGATION */
+/* --- 3. HEADER & NAVIGATION (Douglas Elliman Style) --- */
+
+/* Main Header Container */
 #header {
     background-color: #ffffff !important;
     border-bottom: 1px solid #eee;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    padding: 15px 0;
+    padding: 0 !important; /* Let flexbox handle padding */
+    height: 90px !important; /* Fixed height for consistency */
 }
 
-/* Navigation Links */
-.nav-primary .nav-link {
-    font-family: var(--font-sans) !important;
-    font-size: 12px !important;
-    text-transform: uppercase;
-    font-weight: 600 !important;
-    color: #000 !important;
-    letter-spacing: 1.5px;
-    padding: 0 15px !important;
+/* DESKTOP LAYOUT (Horizontal: Logo Left, Nav Right) */
+@media (min-width: 992px) {
+    
+    /* 1. Force the Flex Container */
+    #header .container .row-flex {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        height: 100% !important;
+        flex-wrap: nowrap !important;
+    }
+
+    /* 2. Logo Area (Left) */
+    #primary-logo {
+        flex: 0 0 auto !important;
+        margin: 0 !important;
+        float: none !important;
+        text-align: left !important;
+        padding: 0 !important;
+        max-width: 300px !important;
+    }
+
+    #primary-logo img {
+        max-height: 65px !important;
+        width: auto !important;
+        object-fit: contain;
+        display: block;
+    }
+
+    /* 3. Navigation Wrapper (Right) */
+    /* This overrides the hidden-lg-up or other template hiding classes */
+    .nav-primary-wrapper {
+        flex: 1 1 auto !important;
+        display: flex !important;
+        justify-content: flex-end !important;
+        align-items: center !important;
+        width: auto !important;
+        float: none !important;
+        margin: 0 !important;
+        background: transparent !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        height: auto !important;
+    }
+
+    /* The actual list of links */
+    .nav-primary {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: flex-end !important;
+        margin: 0 !important;
+        width: auto !important;
+    }
+
+    /* 4. Navigation Links (The Text) */
+    .nav-primary .nav-link {
+        color: #000000 !important; /* Force Black so it's visible on white */
+        font-family: 'Inter', sans-serif !important;
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        letter-spacing: 1px !important;
+        text-transform: uppercase !important;
+        padding: 0 20px !important; /* Space between links */
+        opacity: 1 !important;
+        visibility: visible !important;
+        white-space: nowrap !important;
+    }
+
+    .nav-primary .nav-link:hover {
+        color: var(--accent-color) !important;
+    }
+
+    /* 5. Hide the extra "Login/Social" icons to clean up the right side */
+    .column-end {
+        display: none !important; 
+    }
 }
 
-.nav-primary .nav-link:hover {
-    color: var(--accent-color) !important;
+/* MOBILE LAYOUT (Logo Center, Hamburger Right) */
+@media (max-width: 991px) {
+    #header { height: 70px !important; padding: 10px 0 !important; }
+    
+    #header .container .row-flex {
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    #primary-logo img { max-height: 45px !important; }
+    
+    /* Ensure Hamburger is visible */
+    .navbar-toggler {
+        display: block !important;
+        color: #000 !important;
+        border: 1px solid #ddd !important;
+    }
+    
+    /* Ensure Mobile Menu Background is white when opened */
+    .nav-primary-wrapper.collapse.in {
+        background: #fff !important;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        padding: 20px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    }
 }
 
-/* Logo Sizing */
-#primary-logo img {
-    max-height: 70px;
-}
-
-/* 4. SEARCH BAR TRANSFORMATION */
-/* Container */
+/* --- 4. SEARCH BAR TRANSFORMATION --- */
 #quick-search {
     background: transparent !important;
     box-shadow: none !important;
@@ -72,10 +169,9 @@ h1, h2, h3, h4, h5, h6,
     margin: 0 auto;
 }
 
-/* The Input Field */
 #quick-search .form-control {
     height: 60px;
-    border-radius: 0 !important; /* Square edges */
+    border-radius: 0 !important; 
     border: 1px solid #ddd !important;
     font-family: var(--font-sans);
     font-size: 16px;
@@ -83,7 +179,6 @@ h1, h2, h3, h4, h5, h6,
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
 }
 
-/* The Search Button */
 #quick-search .input-group-addon {
     background-color: var(--primary-color) !important;
     border: none;
@@ -92,11 +187,9 @@ h1, h2, h3, h4, h5, h6,
     border-radius: 0 !important;
 }
 
-#quick-search .input-group-addon i {
-    font-size: 20px;
-}
+#quick-search .input-group-addon i { font-size: 20px; }
 
-/* 5. BUTTONS & ACCENTS */
+/* --- 5. BUTTONS & ACCENTS --- */
 .btn-primary, 
 .btn-primary:active, 
 .btn-primary:focus {
@@ -112,12 +205,12 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .btn-primary:hover {
-    background-color: #ffffff !important;
+    background-color: #fff !important;
     color: var(--primary-color) !important;
-    border-color: var(--primary-color) !important;
+    border: 1px solid var(--primary-color) !important;
 }
 
-/* 6. LISTING CARDS (Grid View) */
+/* --- 6. LISTING CARDS --- */
 .listing-box {
     border: none !important;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
@@ -134,16 +227,14 @@ h1, h2, h3, h4, h5, h6,
     color: var(--primary-color) !important;
 }
 
-/* 7. FOOTER CLEANUP */
+/* --- 7. FOOTER --- */
 #footer {
-    background-color: #1a1a1a !important; /* Dark Grey/Black */
+    background-color: #1a1a1a !important;
     color: #fff;
     font-family: var(--font-sans);
 }
 
-#footer a {
-    color: #ccc !important;
-}
+#footer a { color: #ccc !important; }
 
 #footer h2 {
     color: #fff !important;
@@ -152,91 +243,10 @@ h1, h2, h3, h4, h5, h6,
     margin-bottom: 20px;
 }
 
-/* 8. CLEAN UP HELPERS */
+/* --- 8. HELPERS --- */
 .city-variation-note { display: none !important; }
 .area-category-block h4 {
     font-family: var(--font-serif) !important;
     color: #000 !important;
     border-bottom: 1px solid var(--accent-color) !important;
-}
-
-/* --- LUXURY HEADER: HORIZONTAL LAYOUT (Logo Left, Nav Right) --- */
-@media (min-width: 992px) {
-    /* 1. Main Header Container */
-    #header .container .row-flex {
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        height: 90px !important;
-        flex-wrap: nowrap !important;
-    }
-
-    /* 2. Logo Area (Left) */
-    #primary-logo {
-        flex: 0 0 auto !important;
-        width: auto !important;
-        max-width: 300px !important;
-        margin: 0 !important;
-        float: none !important;
-        text-align: left !important;
-    }
-
-    #primary-logo img {
-        max-height: 60px !important; /* Adjusted for better proportion */
-        width: auto !important;
-        object-fit: contain;
-        display: block;
-    }
-
-    /* 3. Navigation Area (Right) */
-    .nav-primary-wrapper {
-        flex: 1 1 auto !important;
-        display: flex !important;
-        justify-content: flex-end !important; /* Pushes menu to the right */
-        align-items: center !important;
-        width: auto !important;
-        float: none !important;
-        margin: 0 !important;
-        background: transparent !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-    }
-
-    .nav-primary {
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: flex-end !important;
-        margin: 0 !important;
-        width: 100%;
-    }
-
-    /* 4. Navigation Links (Black Text) */
-    .nav-primary .nav-link {
-        color: #000000 !important; /* Deep Black */
-        font-family: 'Inter', sans-serif !important;
-        font-size: 13px !important;
-        font-weight: 600 !important;
-        letter-spacing: 1px !important;
-        text-transform: uppercase !important;
-        padding: 0 15px !important;
-        opacity: 1 !important;
-    }
-
-    /* 5. Hide ONLY the extra social/login icons (Keep the main menu!) */
-    .column-end .list-inline, 
-    .header-social {
-        display: none !important; 
-    }
-}
-
-/* Mobile Menu Fix */
-@media (max-width: 991px) {
-    #header .container .row-flex {
-        display: flex !important;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 15px;
-    }
-    #primary-logo img { max-height: 45px !important; }
 }
