@@ -30,105 +30,119 @@ h1, h2, h3, h4, h5, h6, .widgettitle, .content-title h1, .hero-tagline {
     padding: 0 !important;
 }
 
-/* Clear default layout interference */
-#header .container, #header .row-flex {
+/* Force Flex Layout on the main container */
+#header .container {
     width: 100% !important;
+    max-width: 100% !important;
     height: 100% !important;
-    max-width: none !important;
-    margin: 0 !important;
     padding: 0 30px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
 }
 
-/* 4. LOGO (Left Side) */
+#header .container .row-flex {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    height: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+/* 4. LEFT SIDE: LOGO */
+#header .column {
+    flex: 0 0 auto !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
 #primary-logo {
     display: block !important;
-    flex: 0 0 auto;
-    z-index: 10000;
+    margin: 0 !important;
 }
+
 #primary-logo img {
     max-height: 70px !important;
     width: auto !important;
     object-fit: contain;
 }
 
-/* 5. NAVIGATION (Right Side) */
+/* Hide the Search Bar inside the header (Clean Look) */
+#quick-search { display: none !important; }
 
-/* -- DESKTOP VIEW (Screens > 1200px) -- */
-@media (min-width: 1200px) {
+/* 5. RIGHT SIDE: HAMBURGER & MENU */
+#header .column-end {
+    flex: 1 1 auto !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    position: static !important; /* Allow menu to position relative to header */
+}
+
+/* --- DESKTOP MENU (Screens > 1300px) --- */
+@media (min-width: 1300px) {
     /* Hide Hamburger */
     .navbar-toggler { display: none !important; }
 
-    /* Show Text Menu */
+    /* Show Text Links */
     .nav-primary-wrapper {
         display: block !important;
         background: transparent !important;
         opacity: 1 !important;
         visibility: visible !important;
-        height: 100%;
+        width: auto !important;
+        height: auto !important;
     }
 
     .nav-primary {
         display: flex !important;
-        height: 100%;
         align-items: center;
-        list-style: none;
         margin: 0; padding: 0;
     }
 
     .nav-primary .nav-link {
-        color: #000000 !important; /* Force Black */
+        color: #000000 !important;
         font-family: var(--font-sans) !important;
         font-size: 13px !important;
         font-weight: 600 !important;
         text-transform: uppercase !important;
         letter-spacing: 1px !important;
-        padding: 0 20px !important;
-        background: transparent !important;
+        padding: 0 15px !important;
+        line-height: var(--header-height) !important;
     }
     
     .nav-primary .nav-link:hover { color: var(--accent-color) !important; }
-
-    /* Hide Search/Social clutter */
-    #header #quick-search, .column-end .list-inline { display: none !important; }
 }
 
-/* -- MOBILE/TABLET VIEW (Screens < 1199px) -- */
-@media (max-width: 1199px) {
+/* --- MOBILE/TABLET MENU (Screens < 1299px) --- */
+@media (max-width: 1299px) {
     
-    /* Hide text menu by default */
+    /* Hide Text Menu by Default */
     .nav-primary-wrapper { display: none !important; }
 
-    /* Show menu ONLY when open */
+    /* Show Menu When Open */
     .nav-primary-wrapper.collapse.in {
         display: block !important;
         position: fixed !important;
         top: var(--header-height);
         left: 0; right: 0; bottom: 0;
-        background: #fff !important;
+        background: #ffffff !important;
         padding: 40px;
         z-index: 99998;
         overflow-y: auto;
     }
 
-    .nav-primary {
-        display: flex !important;
-        flex-direction: column;
-        align-items: center;
-    }
-
+    /* Style the Dropdown Links */
+    .nav-primary { display: block !important; }
     .nav-primary .nav-link {
+        display: block;
         color: #000 !important;
-        font-size: 18px !important;
+        font-family: var(--font-serif) !important;
+        font-size: 24px !important;
+        text-align: center;
         padding: 20px 0 !important;
         border-bottom: 1px solid #f0f0f0;
-        width: 100%;
-        text-align: center;
     }
 
-    /* THE HAMBURGER BUTTON */
+    /* HAMBURGER BUTTON STYLE */
     .navbar-toggler {
         display: flex !important;
         flex-direction: column;
@@ -141,15 +155,20 @@ h1, h2, h3, h4, h5, h6, .widgettitle, .content-title h1, .hero-tagline {
         border: none !important;
         cursor: pointer;
         z-index: 10001;
+        margin-left: 15px; /* Spacing from logo if needed */
     }
 
     .navbar-toggler span {
         display: block !important;
-        width: 20px !important; 
+        width: 22px !important; 
         height: 2px !important;
-        background-color: #fff !important; /* White lines */
-        margin: 3px 0 !important;
+        background-color: #ffffff !important;
+        margin: 2.5px 0 !important;
+        border: none !important;
     }
+    
+    /* Hide default text */
+    .navbar-toggler:after, .navbar-toggler:before { display: none !important; }
 }
 
 /* 6. HERO TEXT & FOOTER */
