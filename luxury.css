@@ -1,8 +1,7 @@
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+/* 1. LOAD FONTS (Correct CSS Syntax) */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
-/* --- LUXURY THEME OVERHAUL (Samantha Sells Palm Beach Style) --- */
+/* --- LUXURY THEME OVERHAUL --- */
 
 :root {
     --primary-color: #000000;       /* Deep Black */
@@ -13,7 +12,7 @@
     --font-sans: 'Inter', sans-serif;
 }
 
-/* 1. TYPOGRAPHY UPDATES */
+/* 2. TYPOGRAPHY OVERRIDES (Force Serif on Headers) */
 body {
     font-family: var(--font-sans);
     color: var(--text-color);
@@ -23,29 +22,38 @@ body {
 h1, h2, h3, h4, h5, h6, 
 .widgettitle, 
 .content-title h1,
-.hero-tagline {
+.hero-tagline,
+.listing-box-price {
     font-family: var(--font-serif) !important;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-/* 2. HEADER & NAVIGATION */
+/* Force the Hero Text specifically to be thinner/elegant */
+#home-bodycontent .hero-wrapper h1,
+#home-bodycontent .hero-tagline {
+    font-family: var(--font-serif) !important;
+    font-weight: 400 !important;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+/* 3. HEADER & NAVIGATION */
 #header {
     background-color: #ffffff !important;
     border-bottom: 1px solid #eee;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    padding: 10px 0;
+    padding: 15px 0;
 }
 
 /* Navigation Links */
 .nav-primary .nav-link {
-    font-family: var(--font-sans);
-    font-size: 13px !important;
+    font-family: var(--font-sans) !important;
+    font-size: 12px !important;
     text-transform: uppercase;
-    font-weight: 500;
+    font-weight: 600 !important;
     color: #000 !important;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
     padding: 0 15px !important;
 }
 
@@ -55,21 +63,7 @@ h1, h2, h3, h4, h5, h6,
 
 /* Logo Sizing */
 #primary-logo img {
-    max-height: 70px; /* Make logo slightly larger */
-}
-
-/* 3. HERO SECTION (Main Image Area) */
-/* Hide the dark overlay if possible for a brighter look */
-.hero-wrapper::before {
-    background: rgba(0,0,0,0.2) !important; /* Lighter overlay */
-}
-
-/* The Big Text on the Image */
-#home-bodycontent .hero-tagline {
-    font-size: 3.5rem !important;
-    color: #fff;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-    margin-bottom: 20px;
+    max-height: 70px;
 }
 
 /* 4. SEARCH BAR TRANSFORMATION */
@@ -84,17 +78,17 @@ h1, h2, h3, h4, h5, h6,
 /* The Input Field */
 #quick-search .form-control {
     height: 60px;
-    border-radius: 0 !important; /* Square edges for modern look */
-    border: none;
+    border-radius: 0 !important; /* Square edges */
+    border: 1px solid #ddd !important;
     font-family: var(--font-sans);
     font-size: 16px;
     padding-left: 25px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
 }
 
 /* The Search Button */
 #quick-search .input-group-addon {
-    background-color: var(--primary-color) !important; /* Black Button */
+    background-color: var(--primary-color) !important;
     border: none;
     color: #fff;
     width: 60px;
@@ -111,18 +105,19 @@ h1, h2, h3, h4, h5, h6,
 .btn-primary:focus {
     background-color: var(--primary-color) !important;
     border-color: var(--primary-color) !important;
-    border-radius: 0 !important; /* Sharp corners */
+    border-radius: 0 !important;
     text-transform: uppercase;
-    font-family: var(--font-sans);
+    font-family: var(--font-sans) !important;
     font-weight: 600;
-    letter-spacing: 1px;
-    padding: 12px 25px;
+    letter-spacing: 2px;
+    padding: 12px 30px;
     transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-    background-color: var(--accent-color) !important; /* Gold on hover */
-    border-color: var(--accent-color) !important;
+    background-color: #ffffff !important;
+    color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
 }
 
 /* 6. LISTING CARDS (Grid View) */
@@ -137,9 +132,7 @@ h1, h2, h3, h4, h5, h6,
     box-shadow: 0 15px 30px rgba(0,0,0,0.1);
 }
 
-/* Price styling */
 .listing-box-price {
-    font-family: var(--font-serif);
     font-size: 1.5rem !important;
     color: var(--primary-color) !important;
 }
@@ -157,6 +150,15 @@ h1, h2, h3, h4, h5, h6,
 
 #footer h2 {
     color: #fff !important;
+    font-family: var(--font-serif) !important;
     font-size: 1.2rem;
     margin-bottom: 20px;
+}
+
+/* 8. CLEAN UP HELPERS */
+.city-variation-note { display: none !important; }
+.area-category-block h4 {
+    font-family: var(--font-serif) !important;
+    color: #000 !important;
+    border-bottom: 1px solid var(--accent-color) !important;
 }
