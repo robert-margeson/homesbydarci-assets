@@ -7,60 +7,56 @@
     --accent-color: #c5a059;
     --font-serif: 'Cormorant Garamond', serif;
     --font-sans: 'Inter', sans-serif;
-    --header-height: 90px;
     --navy-blue: #0b1f2e; 
+    --header-height: 100px;
 }
 
-/* --- 2. TYPOGRAPHY --- */
+/* 2. TYPOGRAPHY */
 body { font-family: var(--font-sans); color: #333; }
-
-h1, h2, h3, h4, h5, h6, 
-.widgettitle, .content-title h1, .hero-tagline, .listing-box-price {
+h1, h2, h3, h4, h5, h6, .widgettitle, .content-title h1, .hero-tagline {
     font-family: var(--font-serif) !important;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-/* --- 3. HEADER LAYOUT (Universal Fix) --- */
+/* 3. HEADER CONTAINER */
 #header {
     background-color: #ffffff !important;
     border-bottom: 1px solid #e0e0e0;
     height: var(--header-height) !important;
     position: fixed !important;
-    top: 0; width: 100%; z-index: 9999;
+    top: 0; left: 0; width: 100%; 
+    z-index: 99999;
     padding: 0 !important;
 }
 
-/* Hide default rows to prevent conflict */
+/* Clear default layout interference */
 #header .container, #header .row-flex {
     width: 100% !important;
-    max-width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
     margin: 0 !important;
-    padding: 0 !important;
-    position: static !important;
+    padding: 0 30px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
 }
 
-/* --- 4. LOGO (Always Visible) --- */
+/* 4. LOGO (Left Side) */
 #primary-logo {
     display: block !important;
-    position: absolute !important;
-    left: 20px; 
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10000; /* Sit on top of everything */
-    width: auto !important;
-    max-width: 250px;
-    height: auto !important;
+    flex: 0 0 auto;
+    z-index: 10000;
 }
-
 #primary-logo img {
-    max-height: 60px !important;
+    max-height: 70px !important;
     width: auto !important;
     object-fit: contain;
-    display: block;
 }
 
-/* --- 5. DESKTOP NAVIGATION (Screens > 1200px) --- */
+/* 5. NAVIGATION (Right Side) */
+
+/* -- DESKTOP VIEW (Screens > 1200px) -- */
 @media (min-width: 1200px) {
     /* Hide Hamburger */
     .navbar-toggler { display: none !important; }
@@ -68,14 +64,10 @@ h1, h2, h3, h4, h5, h6,
     /* Show Text Menu */
     .nav-primary-wrapper {
         display: block !important;
-        position: absolute !important;
-        right: 30px;
-        top: 0;
-        height: var(--header-height);
         background: transparent !important;
         opacity: 1 !important;
         visibility: visible !important;
-        width: auto !important;
+        height: 100%;
     }
 
     .nav-primary {
@@ -93,10 +85,8 @@ h1, h2, h3, h4, h5, h6,
         font-weight: 600 !important;
         text-transform: uppercase !important;
         letter-spacing: 1px !important;
-        padding: 0 15px !important;
-        border: none !important;
+        padding: 0 20px !important;
         background: transparent !important;
-        line-height: var(--header-height) !important;
     }
     
     .nav-primary .nav-link:hover { color: var(--accent-color) !important; }
@@ -105,79 +95,67 @@ h1, h2, h3, h4, h5, h6,
     #header #quick-search, .column-end .list-inline { display: none !important; }
 }
 
-/* --- 6. MOBILE/TABLET NAVIGATION (Screens < 1199px) --- */
+/* -- MOBILE/TABLET VIEW (Screens < 1199px) -- */
 @media (max-width: 1199px) {
     
-    /* 1. Hide the desktop text menu by default */
-    .nav-primary-wrapper {
-        display: none !important; 
-    }
+    /* Hide text menu by default */
+    .nav-primary-wrapper { display: none !important; }
 
-    /* 2. Show the menu ONLY when the hamburger is clicked (class 'in') */
+    /* Show menu ONLY when open */
     .nav-primary-wrapper.collapse.in {
         display: block !important;
         position: fixed !important;
         top: var(--header-height);
         left: 0; right: 0; bottom: 0;
-        background: #ffffff !important;
-        padding: 20px;
-        overflow-y: auto;
+        background: #fff !important;
+        padding: 40px;
         z-index: 99998;
-        border-top: 1px solid #eee;
+        overflow-y: auto;
     }
 
     .nav-primary {
         display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
+        flex-direction: column;
+        align-items: center;
     }
 
     .nav-primary .nav-link {
-        display: block;
         color: #000 !important;
-        font-family: var(--font-serif) !important;
-        font-size: 22px !important;
+        font-size: 18px !important;
+        padding: 20px 0 !important;
+        border-bottom: 1px solid #f0f0f0;
+        width: 100%;
         text-align: center;
-        padding: 15px 0 !important;
-        border-bottom: 1px solid #f5f5f5;
     }
 
-    /* 3. THE HAMBURGER BUTTON (Always Visible on Mobile) */
+    /* THE HAMBURGER BUTTON */
     .navbar-toggler {
         display: flex !important;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        position: absolute !important;
-        right: 20px; 
-        top: 50%;
-        transform: translateY(-50%);
         width: 50px !important; 
         height: 50px !important;
         background-color: var(--navy-blue) !important;
-        border-radius: 50% !important; /* Circle Shape */
+        border-radius: 50% !important;
         border: none !important;
         cursor: pointer;
-        z-index: 10001; /* Highest Z-Index */
-        opacity: 1 !important;
-        visibility: visible !important;
+        z-index: 10001;
     }
 
-    /* The Lines inside the button */
     .navbar-toggler span {
         display: block !important;
-        width: 22px !important; 
+        width: 20px !important; 
         height: 2px !important;
-        background-color: #ffffff !important; /* White lines */
-        margin: 2.5px 0 !important;
-        border: none !important;
-        opacity: 1 !important;
+        background-color: #fff !important; /* White lines */
+        margin: 3px 0 !important;
     }
-    
-    /* Remove any default pseudo-elements */
-    .navbar-toggler:after, .navbar-toggler:before { display: none !important; }
 }
 
-/* --- 7. FOOTER --- */
+/* 6. HERO TEXT & FOOTER */
+#home-bodycontent .hero-wrapper h1, .hero-tagline {
+    font-family: var(--font-serif) !important;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.8);
+}
 #footer { background-color: #1a1a1a !important; color: #fff; }
 #footer h2 { color: #fff !important; font-family: var(--font-serif) !important; }
