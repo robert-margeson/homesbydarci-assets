@@ -8,6 +8,7 @@
     --font-serif: 'Cormorant Garamond', serif;
     --font-sans: 'Inter', sans-serif;
     --header-height: 100px;
+    --navy-blue: #0b1f2e; /* The dark color from Samantha's site */
 }
 
 /* --- 2. TYPOGRAPHY --- */
@@ -20,146 +21,159 @@ h1, h2, h3, h4, h5, h6,
     letter-spacing: 1px;
 }
 
-/* --- 3. HEADER LAYOUT --- */
+/* --- 3. HEADER LAYOUT (Universal) --- */
 #header {
     background-color: #ffffff !important;
     border-bottom: 1px solid #e0e0e0;
     height: var(--header-height) !important;
     position: fixed !important;
     top: 0; width: 100%; z-index: 9999;
+    padding: 0 !important;
 }
 
-/* --- DESKTOP VIEW (Large Screens) --- */
-@media (min-width: 1100px) { /* Increased breakpoint to prevent early overlapping */
-    
-    /* Force Row Layout */
-    #header .container .row-flex {
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        height: 100% !important;
-        flex-wrap: nowrap !important;
-    }
+/* Force the container to be a Flex Row */
+#header .container .row-flex {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    height: 100% !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+}
 
-    /* Logo (Left) */
-    #primary-logo {
-        flex: 0 0 auto;
-        margin-right: auto !important; /* Pushes everything else right */
-        max-width: 280px;
-    }
-    #primary-logo img { max-height: 75px !important; width: auto; }
+/* LOGO STYLING (Always Left) */
+#header .column, #primary-logo {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    max-width: 300px;
+    margin: 0 !important;
+    padding: 0 !important;
+}
 
-    /* Nav Container (Right) */
+#primary-logo img {
+    max-height: 70px !important;
+    width: auto !important;
+    object-fit: contain;
+    display: block;
+}
+
+/* Hide Search Bar & Social Icons from Header */
+#header #quick-search, 
+#header .column-end { display: none !important; }
+
+/* --- 4. DESKTOP VIEW (Screens WIDER than 1300px) --- */
+/* Show full text menu */
+@media (min-width: 1300px) {
     .nav-primary-wrapper {
         display: flex !important;
         background: transparent !important;
         opacity: 1 !important;
         visibility: visible !important;
         width: auto !important;
+        height: auto !important;
+        position: relative !important;
+        box-shadow: none !important;
+        top: auto !important;
     }
 
     .nav-primary {
         display: flex !important;
-        align-items: center !important;
+        flex-direction: row !important;
+        margin: 0 !important;
     }
 
-    /* Nav Links */
+    /* Text Links */
     .nav-primary .nav-link {
-        color: #000 !important;
+        color: #000000 !important;
         font-family: var(--font-sans) !important;
-        font-size: 12px !important;
+        font-size: 13px !important;
         font-weight: 600 !important;
         letter-spacing: 1px !important;
         text-transform: uppercase !important;
-        padding: 0 15px !important;
+        padding: 0 20px !important;
+        border: none !important;
     }
     
     .nav-primary .nav-link:hover { color: var(--accent-color) !important; }
 
-    /* Hide Clutter */
-    #header .column #quick-search, 
-    .column-end .list-inline,
-    #header .navbar-toggler { display: none !important; }
+    /* Hide Hamburger on large screens */
+    .navbar-toggler { display: none !important; }
 }
 
-/* --- TABLET & MOBILE VIEW (The "Samantha" Circle Menu) --- */
-@media (max-width: 1099px) {
-    #header { height: 80px !important; padding: 0 20px !important; }
-
-    #header .container .row-flex {
-        display: flex !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        height: 100%;
-    }
-
-    /* Logo stays on left */
-    #primary-logo img { max-height: 50px !important; }
-
-    /* HIDE the normal text menu */
+/* --- 5. COMPACT VIEW (Tablets & Smaller Laptops < 1300px) --- */
+/* Hide text menu, Show Circle Hamburger */
+@media (max-width: 1299px) {
+    
+    /* Hide the text menu by default */
     .nav-primary-wrapper {
-        display: none !important; /* Hidden by default, shown by JS when clicked */
+        display: none !important; 
     }
     
-    /* When menu is OPENED by click */
+    /* SHOW the text menu only when opened (clicked) */
     .nav-primary-wrapper.collapse.in {
         display: block !important;
         position: absolute;
-        top: 80px; left: 0; right: 0;
+        top: var(--header-height);
+        left: 0; right: 0;
         background: #fff;
-        padding: 20px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    .nav-primary .nav-link {
-        display: block;
-        padding: 15px 0;
-        border-bottom: 1px solid #eee;
-        color: #000 !important;
-        text-align: center;
+        padding: 0;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        border-top: 1px solid #eee;
     }
 
-    /* THE LUXURY HAMBURGER BUTTON */
+    /* Style the dropdown links */
+    .nav-primary { display: block !important; width: 100% !important; }
+    .nav-primary .nav-link {
+        display: block;
+        padding: 20px !important;
+        border-bottom: 1px solid #f5f5f5;
+        color: #000 !important;
+        text-align: center;
+        font-size: 16px !important;
+    }
+
+    /* --- THE LUXURY CIRCLE HAMBURGER BUTTON --- */
     .navbar-toggler {
         display: flex !important;
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        width: 50px !important;
-        height: 50px !important;
-        background-color: #0b1f2e !important; /* The Dark Navy Color */
-        border-radius: 50% !important; /* Make it a circle */
+        width: 55px !important;
+        height: 55px !important;
+        background-color: var(--navy-blue) !important;
+        border-radius: 50% !important;
         border: none !important;
         padding: 0 !important;
         position: relative;
-        right: 0;
+        cursor: pointer;
+        transition: transform 0.2s ease;
     }
+    
+    .navbar-toggler:hover { transform: scale(1.05); }
 
-    /* The White Lines inside the circle */
+    /* The White Lines */
     .navbar-toggler span {
         display: block !important;
-        width: 20px !important;
+        width: 22px !important;
         height: 2px !important;
-        background-color: #fff !important; /* White lines */
-        margin: 2px 0 !important;
+        background-color: #ffffff !important;
+        margin: 2.5px 0 !important;
         border: none !important;
     }
     
-    /* Hide the default "Menu" text if it exists */
+    /* Remove default "Menu" text */
     .navbar-toggler:after { content: none !important; }
 }
 
-/* --- 4. COMPONENT STYLING --- */
-
-/* Hero Text - More readable */
+/* --- 6. HERO & BUTTONS --- */
 #home-bodycontent .hero-wrapper h1, 
 .hero-tagline {
     font-family: var(--font-serif) !important;
     font-weight: 400 !important;
-    text-shadow: 0 2px 15px rgba(0,0,0,0.8); /* Stronger shadow */
+    text-shadow: 0 2px 15px rgba(0,0,0,0.8);
 }
 
-/* Buttons */
 .btn-primary {
     background-color: var(--primary-color) !important;
     border-color: var(--primary-color) !important;
@@ -169,6 +183,5 @@ h1, h2, h3, h4, h5, h6,
     text-transform: uppercase;
 }
 
-/* Footer */
 #footer { background-color: #1a1a1a !important; color: #fff; }
 #footer h2 { color: #fff !important; font-family: var(--font-serif) !important; }
