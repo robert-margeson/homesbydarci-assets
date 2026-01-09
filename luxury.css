@@ -1,6 +1,3 @@
-/* 1. LOAD FONTS (Correct CSS Syntax) */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
-
 /* --- LUXURY THEME OVERHAUL --- */
 
 :root {
@@ -161,4 +158,32 @@ h1, h2, h3, h4, h5, h6,
     font-family: var(--font-serif) !important;
     color: #000 !important;
     border-bottom: 1px solid var(--accent-color) !important;
+}
+
+/* --- CENTERED HEADER LAYOUT (Desktop Only) --- */
+@media (min-width: 992px) {
+    /* Stack Logo and Nav vertically */
+    #header .container .row-flex {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Center the Logo area */
+    #header .column {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 15px; /* Space between logo and nav */
+    }
+
+    /* Center the Navigation Links */
+    #header .column-end {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Hide the small "Login/Contact" icons to clean it up */
+    #header .list-inline:not(.nav-primary) {
+        display: none !important;
+    }
 }
