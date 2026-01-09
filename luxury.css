@@ -160,73 +160,47 @@ h1, h2, h3, h4, h5, h6,
     border-bottom: 1px solid var(--accent-color) !important;
 }
 
-/* --- CENTERED HEADER LAYOUT (Desktop Only) --- */
-@media (min-width: 992px) {
-    /* Stack Logo and Nav vertically */
-    #header .container .row-flex {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    /* Center the Logo area */
-    #header .column {
-        width: 100%;
-        justify-content: center;
-        margin-bottom: 15px; /* Space between logo and nav */
-    }
-
-    /* Center the Navigation Links */
-    #header .column-end {
-        width: 100%;
-        justify-content: center;
-    }
-
-    /* Hide the small "Login/Contact" icons to clean it up */
-    #header .list-inline:not(.nav-primary) {
-        display: none !important;
-    }
-}
-
 /* --- LUXURY HEADER: HORIZONTAL LAYOUT (Logo Left, Nav Right) --- */
 @media (min-width: 992px) {
-    /* 1. Main Header Container - Horizontal Row */
+    /* 1. Main Header Container */
     #header .container .row-flex {
         display: flex !important;
         flex-direction: row !important;
-        justify-content: space-between !important; /* Pushes Logo Left, Nav Right */
+        justify-content: space-between !important;
         align-items: center !important;
-        height: 90px !important; /* Fixed height for consistency */
+        height: 90px !important;
         flex-wrap: nowrap !important;
     }
 
-    /* 2. Logo - Left Aligned & Sized */
+    /* 2. Logo Area (Left) */
     #primary-logo {
-        flex: 0 0 auto !important; /* Do not stretch */
+        flex: 0 0 auto !important;
         width: auto !important;
-        max-width: 250px !important; /* Prevent it from being huge */
+        max-width: 300px !important;
         margin: 0 !important;
         float: none !important;
         text-align: left !important;
-        padding-left: 0 !important;
     }
 
     #primary-logo img {
-        max-height: 70px !important; /* Standard luxury header height */
+        max-height: 60px !important; /* Adjusted for better proportion */
         width: auto !important;
         object-fit: contain;
+        display: block;
     }
 
-    /* 3. Navigation - Right Aligned */
+    /* 3. Navigation Area (Right) */
     .nav-primary-wrapper {
-        flex: 1 1 auto !important; /* Take up remaining space */
+        flex: 1 1 auto !important;
         display: flex !important;
-        justify-content: flex-end !important; /* Align links to the right */
+        justify-content: flex-end !important; /* Pushes menu to the right */
         align-items: center !important;
         width: auto !important;
         float: none !important;
-        margin-top: 0 !important;
-        background: transparent !important; /* Ensure no white box hiding text */
+        margin: 0 !important;
+        background: transparent !important;
+        opacity: 1 !important;
+        visibility: visible !important;
     }
 
     .nav-primary {
@@ -234,35 +208,29 @@ h1, h2, h3, h4, h5, h6,
         flex-direction: row !important;
         justify-content: flex-end !important;
         margin: 0 !important;
+        width: 100%;
     }
 
-    /* 4. Navigation Links - Visibility Fix */
+    /* 4. Navigation Links (Black Text) */
     .nav-primary .nav-link {
-        color: #000 !important; /* Force Black text */
+        color: #000000 !important; /* Deep Black */
         font-family: 'Inter', sans-serif !important;
         font-size: 13px !important;
-        font-weight: 500 !important;
+        font-weight: 600 !important;
         letter-spacing: 1px !important;
         text-transform: uppercase !important;
-        padding: 0 20px !important; /* Spacing between links */
-        white-space: nowrap !important;
-        opacity: 1 !important; /* Ensure they aren't hidden */
-        visibility: visible !important;
+        padding: 0 15px !important;
+        opacity: 1 !important;
     }
 
-    /* Hover effect */
-    .nav-primary .nav-link:hover {
-        color: var(--accent-color) !important;
-    }
-
-    /* 5. Hide the extra "Login/Social" clutter if you want a clean look */
-    /* This targets the extra icons, NOT the main menu */
-    .column-end {
+    /* 5. Hide ONLY the extra social/login icons (Keep the main menu!) */
+    .column-end .list-inline, 
+    .header-social {
         display: none !important; 
     }
 }
 
-/* Mobile Menu Fix (Hamburger) */
+/* Mobile Menu Fix */
 @media (max-width: 991px) {
     #header .container .row-flex {
         display: flex !important;
@@ -270,5 +238,5 @@ h1, h2, h3, h4, h5, h6,
         align-items: center;
         padding: 10px 15px;
     }
-    #primary-logo img { max-height: 50px !important; }
+    #primary-logo img { max-height: 45px !important; }
 }
