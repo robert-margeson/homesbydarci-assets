@@ -7,14 +7,11 @@
     --accent-color: #c5a059;
     --font-serif: 'Cormorant Garamond', serif;
     --font-sans: 'Inter', sans-serif;
-    --header-height: 110px;
+    --header-height: 100px;
 }
 
-/* --- 2. TYPOGRAPHY OVERRIDES --- */
-body {
-    font-family: var(--font-sans);
-    color: #333;
-}
+/* --- 2. TYPOGRAPHY --- */
+body { font-family: var(--font-sans); color: #333; }
 
 h1, h2, h3, h4, h5, h6, 
 .widgettitle, .content-title h1, .hero-tagline, .listing-box-price {
@@ -23,157 +20,143 @@ h1, h2, h3, h4, h5, h6,
     letter-spacing: 1px;
 }
 
-/* --- 3. HEADER LAYOUT (Sniper Fix) --- */
-
-/* Reset Header Container */
+/* --- 3. HEADER LAYOUT --- */
 #header {
     background-color: #ffffff !important;
     border-bottom: 1px solid #e0e0e0;
     height: var(--header-height) !important;
-    position: fixed !important; /* Sticky header */
+    position: fixed !important;
     top: 0; width: 100%; z-index: 9999;
 }
 
-/* DESKTOP RULES (min-width 992px) */
-@media (min-width: 992px) {
-
-    /* --- A. LOGO ROW (Left Side) --- */
-    /* This targets the row containing the logo */
-    #header .container .row-flex:nth-child(2) {
-        height: 100% !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: flex-start !important;
-        position: relative;
-        z-index: 20;
-    }
-
-    /* Force Logo Size & Position */
-    #primary-logo {
-        flex: 0 0 auto !important;
-        max-width: 250px !important;
-        margin: 0 !important;
-    }
-    #primary-logo img {
-        max-height: 80px !important;
-        width: auto !important;
-        object-fit: contain;
-    }
-
-    /* Hide the Search Bar & Social Icons in the Logo Row to clear space */
-    #header .column #quick-search, 
-    #header .column-end {
-        display: none !important; 
-    }
-
-    /* --- B. NAVIGATION ROW (Right Side - Absolute Position) --- */
-    /* This targets the separate row containing the menu */
-    #header .container .row-flex:nth-child(3) {
-        position: absolute !important;
-        top: 0 !important;
-        right: 20px !important; /* Pin to right */
-        height: var(--header-height) !important;
-        width: auto !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: flex-end !important;
-        z-index: 30; /* Sit on top of everything */
-        pointer-events: none; /* Let clicks pass through empty space */
-    }
-
-    /* The Nav Wrapper itself */
-    .nav-primary-wrapper {
-        display: block !important;
-        width: auto !important;
-        background: transparent !important;
-        position: relative !important;
-        top: auto !important;
-        pointer-events: auto; /* Re-enable clicks on links */
-        margin-top: 0 !important; /* Override template negative margin */
-    }
-
-    /* The UL List */
-    .nav-primary {
+/* --- DESKTOP VIEW (Large Screens) --- */
+@media (min-width: 1100px) { /* Increased breakpoint to prevent early overlapping */
+    
+    /* Force Row Layout */
+    #header .container .row-flex {
         display: flex !important;
         flex-direction: row !important;
-        margin: 0 !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        height: 100% !important;
+        flex-wrap: nowrap !important;
     }
 
-    /* The Individual Links */
+    /* Logo (Left) */
+    #primary-logo {
+        flex: 0 0 auto;
+        margin-right: auto !important; /* Pushes everything else right */
+        max-width: 280px;
+    }
+    #primary-logo img { max-height: 75px !important; width: auto; }
+
+    /* Nav Container (Right) */
+    .nav-primary-wrapper {
+        display: flex !important;
+        background: transparent !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        width: auto !important;
+    }
+
+    .nav-primary {
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    /* Nav Links */
     .nav-primary .nav-link {
-        color: #000000 !important; /* FORCE BLACK TEXT */
+        color: #000 !important;
         font-family: var(--font-sans) !important;
-        font-size: 13px !important;
+        font-size: 12px !important;
         font-weight: 600 !important;
         letter-spacing: 1px !important;
         text-transform: uppercase !important;
         padding: 0 15px !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        background: transparent !important;
     }
+    
+    .nav-primary .nav-link:hover { color: var(--accent-color) !important; }
 
-    .nav-primary .nav-link:hover {
-        color: var(--accent-color) !important;
-    }
-
-    /* Hide Top Bar (Login/Phone) if it exists, for cleaner look */
-    #header .container .row-flex:first-child {
-        display: none !important;
-    }
+    /* Hide Clutter */
+    #header .column #quick-search, 
+    .column-end .list-inline,
+    #header .navbar-toggler { display: none !important; }
 }
 
-/* --- 4. MOBILE LAYOUT (Phones) --- */
-@media (max-width: 991px) {
-    #header { height: 80px !important; }
+/* --- TABLET & MOBILE VIEW (The "Samantha" Circle Menu) --- */
+@media (max-width: 1099px) {
+    #header { height: 80px !important; padding: 0 20px !important; }
 
-    /* Logo Center */
-    #header .container .row-flex:nth-child(2) {
+    #header .container .row-flex {
         display: flex !important;
-        justify-content: center !important;
+        justify-content: space-between !important;
         align-items: center !important;
         height: 100%;
     }
+
+    /* Logo stays on left */
     #primary-logo img { max-height: 50px !important; }
 
-    /* Hamburger Menu Button Position */
-    .navbar-toggler {
-        display: block !important;
-        position: absolute !important;
-        top: 20px !important;
-        right: 15px !important;
-        border: 1px solid #ddd !important;
-        border-radius: 4px !important;
-        padding: 6px 10px !important;
-        z-index: 100;
-    }
-    .navbar-toggler span { background-color: #000 !important; height: 2px !important; margin: 4px 0 !important; }
-
-    /* Mobile Menu Dropdown */
+    /* HIDE the normal text menu */
     .nav-primary-wrapper {
-        background: #fff !important;
-        position: absolute !important;
-        top: 80px !important;
-        left: 0; right: 0;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        display: none !important; /* Hidden by default, shown by JS when clicked */
+    }
+    
+    /* When menu is OPENED by click */
+    .nav-primary-wrapper.collapse.in {
+        display: block !important;
+        position: absolute;
+        top: 80px; left: 0; right: 0;
+        background: #fff;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
     .nav-primary .nav-link {
-        color: #000 !important;
+        display: block;
+        padding: 15px 0;
         border-bottom: 1px solid #eee;
-        padding: 15px !important;
+        color: #000 !important;
+        text-align: center;
     }
+
+    /* THE LUXURY HAMBURGER BUTTON */
+    .navbar-toggler {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 50px !important;
+        height: 50px !important;
+        background-color: #0b1f2e !important; /* The Dark Navy Color */
+        border-radius: 50% !important; /* Make it a circle */
+        border: none !important;
+        padding: 0 !important;
+        position: relative;
+        right: 0;
+    }
+
+    /* The White Lines inside the circle */
+    .navbar-toggler span {
+        display: block !important;
+        width: 20px !important;
+        height: 2px !important;
+        background-color: #fff !important; /* White lines */
+        margin: 2px 0 !important;
+        border: none !important;
+    }
+    
+    /* Hide the default "Menu" text if it exists */
+    .navbar-toggler:after { content: none !important; }
 }
 
-/* --- 5. COMPONENT STYLING --- */
+/* --- 4. COMPONENT STYLING --- */
 
-/* Hero Text */
+/* Hero Text - More readable */
 #home-bodycontent .hero-wrapper h1, 
 .hero-tagline {
     font-family: var(--font-serif) !important;
     font-weight: 400 !important;
-    text-shadow: 0 2px 15px rgba(0,0,0,0.5);
+    text-shadow: 0 2px 15px rgba(0,0,0,0.8); /* Stronger shadow */
 }
 
 /* Buttons */
@@ -184,17 +167,8 @@ h1, h2, h3, h4, h5, h6,
     font-family: var(--font-sans) !important;
     letter-spacing: 2px;
     text-transform: uppercase;
-    transition: all 0.3s ease;
 }
-.btn-primary:hover {
-    background-color: #fff !important;
-    color: var(--primary-color) !important;
-}
-
-/* Listing Cards */
-.listing-box { border: none !important; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-.listing-box-price { font-size: 1.6rem !important; color: var(--primary-color) !important; }
 
 /* Footer */
-#footer { background-color: #1a1a1a !important; color: #fff; font-family: var(--font-sans); }
-#footer h2 { color: #fff !important; font-family: var(--font-serif) !important; margin-bottom: 20px; }
+#footer { background-color: #1a1a1a !important; color: #fff; }
+#footer h2 { color: #fff !important; font-family: var(--font-serif) !important; }
