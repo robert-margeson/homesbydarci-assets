@@ -188,62 +188,87 @@ h1, h2, h3, h4, h5, h6,
     }
 }
 
-/* --- FIX: CENTERED HEADER LAYOUT (CHAMPION TEMPLATE) --- */
+/* --- LUXURY HEADER: HORIZONTAL LAYOUT (Logo Left, Nav Right) --- */
 @media (min-width: 992px) {
-    /* 1. Force the Header Container to Grow vertically */
-    #header {
-        height: auto !important;
-        padding: 20px 0 !important;
-    }
-
+    /* 1. Main Header Container - Horizontal Row */
     #header .container .row-flex {
         display: flex !important;
-        flex-direction: column !important;
+        flex-direction: row !important;
+        justify-content: space-between !important; /* Pushes Logo Left, Nav Right */
         align-items: center !important;
-        justify-content: center !important;
-        height: auto !important;
+        height: 90px !important; /* Fixed height for consistency */
+        flex-wrap: nowrap !important;
     }
 
-    /* 2. Reset & Center the Logo */
+    /* 2. Logo - Left Aligned & Sized */
     #primary-logo {
+        flex: 0 0 auto !important; /* Do not stretch */
+        width: auto !important;
+        max-width: 250px !important; /* Prevent it from being huge */
+        margin: 0 !important;
         float: none !important;
-        display: block !important;
-        margin: 0 auto 20px auto !important; /* Add space below logo */
-        position: static !important;
-        text-align: center !important;
-        width: 100% !important;
-        max-width: none !important;
-    }
-    
-    #primary-logo a {
-        display: inline-block !important;
+        text-align: left !important;
+        padding-left: 0 !important;
     }
 
     #primary-logo img {
-        max-height: 90px !important; /* Make logo nice and big */
+        max-height: 70px !important; /* Standard luxury header height */
         width: auto !important;
-        display: block !important;
+        object-fit: contain;
     }
 
-    /* 3. Reset & Center the Navigation */
+    /* 3. Navigation - Right Aligned */
     .nav-primary-wrapper {
+        flex: 1 1 auto !important; /* Take up remaining space */
+        display: flex !important;
+        justify-content: flex-end !important; /* Align links to the right */
+        align-items: center !important;
+        width: auto !important;
         float: none !important;
-        display: block !important;
-        width: 100% !important;
-        text-align: center !important;
-        margin-top: 5px !important;
+        margin-top: 0 !important;
+        background: transparent !important; /* Ensure no white box hiding text */
     }
 
     .nav-primary {
-        float: none !important;
-        display: inline-flex !important;
-        justify-content: center !important;
-        width: auto !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: flex-end !important;
+        margin: 0 !important;
     }
-    
-    /* 4. Hide Clutter (Login/Social icons on the sides) */
-    .column-end, 
-    #header .list-inline {
+
+    /* 4. Navigation Links - Visibility Fix */
+    .nav-primary .nav-link {
+        color: #000 !important; /* Force Black text */
+        font-family: 'Inter', sans-serif !important;
+        font-size: 13px !important;
+        font-weight: 500 !important;
+        letter-spacing: 1px !important;
+        text-transform: uppercase !important;
+        padding: 0 20px !important; /* Spacing between links */
+        white-space: nowrap !important;
+        opacity: 1 !important; /* Ensure they aren't hidden */
+        visibility: visible !important;
+    }
+
+    /* Hover effect */
+    .nav-primary .nav-link:hover {
+        color: var(--accent-color) !important;
+    }
+
+    /* 5. Hide the extra "Login/Social" clutter if you want a clean look */
+    /* This targets the extra icons, NOT the main menu */
+    .column-end {
         display: none !important; 
     }
+}
+
+/* Mobile Menu Fix (Hamburger) */
+@media (max-width: 991px) {
+    #header .container .row-flex {
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px;
+    }
+    #primary-logo img { max-height: 50px !important; }
 }
