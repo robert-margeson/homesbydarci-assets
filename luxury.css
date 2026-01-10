@@ -3,10 +3,11 @@
 
 :root {
     /* PRIMARY: Editorial Black (Buttons, Text) */
-    --primary-color: #000000; 
+    --primary-color: #1a1a1a; 
     
     /* ACCENT: Navy Blue (Icons, Hovers, Borders) */
     --accent-color: #0e2a47; 
+    --navy: #0e2a47;
     
     /* BACKGROUNDS */
     --bg-light: #f9f8f6;
@@ -113,48 +114,64 @@ body.header-transparent .nav-primary .nav-item .nav-link:hover {
     transform: translateY(-2px);
 }
 
-/* --- DESKTOP ONLY (Min-width 992px) --- */
+/* === DESKTOP RULES (Min-width 992px) === */
 @media (min-width: 992px) {
-    /* White text ONLY on Desktop Homepage */
+    
+    /* Default Desktop Links (Search Pages) -> BLACK */
+    .nav-primary .nav-item .nav-link {
+        font-family: var(--font-sans);
+        text-transform: uppercase;
+        font-size: 13px;
+        letter-spacing: 1.5px;
+        color: #000000 !important;
+        font-weight: 500;
+        padding: 15px 20px;
+        transition: all 0.3s ease;
+    }
+
+    /* Homepage Desktop Override -> WHITE */
     body.header-transparent .nav-primary .nav-item .nav-link {
         color: #ffffff !important;
         text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-        font-weight: 500;
-        transition: all 0.3s ease;
-        border-bottom: 2px solid transparent;
     }
 
-    /* Hover State (Desktop) */
+    /* Homepage Desktop Hover -> NAVY (or remain White with Underline) */
     body.header-transparent .nav-primary .nav-item .nav-link:hover {
-        color: #ffffff !important;
         opacity: 1;
-        border-bottom: 2px solid #ffffff; 
         transform: translateY(-2px);
+        color: #ffffff !important; /* Keep text white */
+        border-bottom: 2px solid #ffffff; /* Add white underline instead of changing color */
     }
 }
 
-/* --- MOBILE / HAMBURGER MENU FIX --- */
-/* This targets the menu when it is OPEN (white background) */
+/* === MOBILE RULES (Max-width 991px) === */
 @media (max-width: 991px) {
+    
+    /* 1. Force Menu Background White */
     .nav-primary-wrapper {
         background-color: #fff !important;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
     
-    /* FORCE NAVY/BLACK on Mobile so it is readable against white background */
+    /* 2. Force Mobile Links to BLACK (Always readable) */
+    /* We use !important to override the 'header-transparent' white rule */
     .nav-primary .nav-item .nav-link,
     body.header-transparent .nav-primary .nav-item .nav-link {
-        color: #0e2a47 !important; /* Navy */
+        color: #000000 !important; 
         text-shadow: none !important;
+        font-family: var(--font-sans);
         font-weight: 600 !important;
         padding: 15px 20px;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid #f0f0f0;
+        text-align: left;
     }
 
-    /* Mobile Hover */
-    .nav-primary .nav-item .nav-link:hover {
-        color: var(--accent-color) !important;
-        background-color: #f9f9f9;
-        border-bottom: 1px solid #eee;
+    /* 3. Mobile Hover State -> NAVY (Not White) */
+    .nav-primary .nav-item .nav-link:hover,
+    body.header-transparent .nav-primary .nav-item .nav-link:hover {
+        color: var(--accent-color) !important; /* Turn Navy */
+        background-color: #f9f9f9 !important; /* Light grey background */
+        border-bottom: 1px solid #f0f0f0;
     }
 }
 
