@@ -24,16 +24,16 @@
 
 /* New Text Logo */
 .luxury-logo-text {
-    font-family: var(--font-serif) !important;
+    font-family: 'Cormorant Garamond', serif !important;
     font-size: 32px;
     letter-spacing: 2px;
     font-weight: 400;
-    color: #fff; /* White on homepage */
     text-transform: uppercase;
     line-height: 1;
     display: block;
     margin-top: 10px;
-    text-shadow: 0 1px 10px rgba(0,0,0,0.3);
+    color: #000000 !important; /* Default to Black so it shows on white pages */
+    text-shadow: none;
 }
 
 /* --- 3. HERO SECTION & SEARCH REMOVAL --- */
@@ -113,28 +113,55 @@ body.header-transparent .nav-primary .nav-item .nav-link:hover {
     transform: translateY(-2px);
 }
 
+/* --- DESKTOP ONLY (Min-width 992px) --- */
+@media (min-width: 992px) {
+    /* White text ONLY on Desktop Homepage */
+    body.header-transparent .nav-primary .nav-item .nav-link {
+        color: #ffffff !important;
+        text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border-bottom: 2px solid transparent;
+    }
+
+    /* Hover State (Desktop) */
+    body.header-transparent .nav-primary .nav-item .nav-link:hover {
+        color: #ffffff !important;
+        opacity: 1;
+        border-bottom: 2px solid #ffffff; 
+        transform: translateY(-2px);
+    }
+}
+
 /* --- MOBILE / HAMBURGER MENU FIX --- */
 /* This targets the menu when it is OPEN (white background) */
 @media (max-width: 991px) {
     .nav-primary-wrapper {
-        background-color: #fff !important; /* Force white background */
+        background-color: #fff !important;
     }
     
-    /* Force links to be Navy/Black on mobile so they are visible */
+    /* FORCE NAVY/BLACK on Mobile so it is readable against white background */
     .nav-primary .nav-item .nav-link,
     body.header-transparent .nav-primary .nav-item .nav-link {
-        color: var(--primary-color) !important; /* Black text */
+        color: #0e2a47 !important; /* Navy */
         text-shadow: none !important;
+        font-weight: 600 !important;
         padding: 15px 20px;
         border-bottom: 1px solid #eee;
     }
 
     /* Mobile Hover */
     .nav-primary .nav-item .nav-link:hover {
-        color: var(--accent-color) !important; /* Navy on hover */
+        color: var(--accent-color) !important;
         background-color: #f9f9f9;
-        border-bottom: 1px solid #eee; /* No underline on mobile */
+        border-bottom: 1px solid #eee;
     }
+}
+
+/* 2. Homepage Override -> WHITE */
+body.header-transparent .luxury-logo-text {
+    color: #ffffff !important;
+    text-shadow: 0 1px 10px rgba(0,0,0,0.3);
 }
 
 /* --- 5. HAMBURGER BUTTON (Navy Update) --- */
@@ -153,14 +180,14 @@ body.header-transparent .nav-primary .nav-item .nav-link:hover {
     transition: all 0.3s ease;
 }
 
-/* Hover Effect: Turns Navy Background with White lines */
+/* HOVER STATE: Turn Border & Lines to Navy */
 .navbar-toggler:hover {
-    background-color: var(--accent-color) !important; /* Navy Background */
-    border-color: var(--accent-color) !important;
+    border-color: #0e2a47 !important; /* Navy Border */
+    background-color: rgba(255,255,255, 0.9) !important; /* Slight white fill */
 }
 
 .navbar-toggler:hover span {
-    background-color: #fff !important; /* Keep lines white */
+    background-color: #0e2a47 !important; /* Navy Lines */
 }
 
 /* --- 6. BUTTONS & UI ELEMENTS --- */
