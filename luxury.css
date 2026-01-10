@@ -361,3 +361,134 @@ body.listing-detail .listing-price {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+
+/* --- SEARCH RESULTS PAGE REFINEMENT --- */
+
+/* 1. FILTER BAR (Top Right) */
+/* Targets "Map", "Days on Website", "More Filters" */
+#search-actions {
+    background-color: #fff !important;
+    border-bottom: 1px solid #eee !important;
+    padding: 15px 20px !important;
+}
+
+/* Style the Filter Buttons */
+#search-actions .btn,
+#search-actions .btn-group .btn {
+    background-color: #fff !important;
+    border: 1px solid #e0e0e0 !important;
+    color: #1a1a1a !important; /* Charcoal text */
+    border-radius: 0px !important; /* Sharp corners */
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 11px !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: none !important;
+}
+
+/* Hover State for Filters */
+#search-actions .btn:hover {
+    border-color: #0e2a47 !important; /* Navy Border */
+    color: #0e2a47 !important;
+}
+
+/* "Save Search" Button (Make it pop) */
+#search-actions .btn-primary,
+button[onclick*="saveSearch"] {
+    background-color: #1a1a1a !important; /* Solid Charcoal */
+    color: #fff !important;
+    border: 1px solid #1a1a1a !important;
+}
+
+/* 2. LISTING CARDS (The Homes) */
+/* Remove the heavy drop shadow and borders for a clean "gallery" look */
+#map-listings-container .card,
+.listing-box {
+    border: none !important;
+    box-shadow: none !important;
+    background-color: #fff !important;
+    margin-bottom: 40px !important; /* More breathing room between homes */
+}
+
+/* Images */
+#map-listings-container .card-img-top,
+.listing-box-image {
+    border-radius: 0px !important;
+    filter: brightness(1.02); /* Slight brightness boost */
+}
+
+/* 3. PRICE & ADDRESS TYPOGRAPHY */
+/* Price - Big Serif Font */
+.card-title .card-price,
+.listing-box-title h3 {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 26px !important;
+    font-weight: 500 !important;
+    color: #0e2a47 !important; /* Navy Accent */
+    background: transparent !important; /* Remove any default highlight */
+    padding: 0 !important;
+}
+
+/* Address - Clean Sans Font */
+.card-title .card-address,
+.listing-box-title h2,
+.card-footer .card-city {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 11px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px;
+    color: #1a1a1a !important;
+    margin-top: 5px !important;
+}
+
+/* 4. STATS ROW (Beds/Baths/SqFt) */
+.card-footer .size-data {
+    border-top: 1px solid #f0f0f0 !important;
+    padding-top: 10px !important;
+    margin-top: 10px !important;
+}
+
+.card-footer .size-data .card-value {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: #1a1a1a !important;
+}
+
+.card-footer .size-data .card-label {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 9px !important;
+    text-transform: uppercase;
+    color: #999 !important;
+}
+
+/* 5. "JUST LISTED" / STATUS BADGES */
+/* Change standard black/orange badges to Navy */
+.card-img-top .card-badge,
+.listing-box-image-label {
+    background-color: #0e2a47 !important; /* Navy */
+    border-radius: 0px !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 9px !important;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 6px 12px !important;
+    top: 15px !important;
+    left: 15px !important;
+}
+
+/* 6. HOVER ACTIONS (View Details / Save) */
+/* The overlay that appears when you mouse over a home */
+.card-actions,
+.listing-box-image-links {
+    background-color: rgba(14, 42, 71, 0.9) !important; /* Navy Transparency */
+}
+
+.card-actions a,
+.listing-box-image-links a {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 500 !important;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 11px !important;
+}
