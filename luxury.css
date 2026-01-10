@@ -148,7 +148,8 @@
 /* --- 2. SEARCH BAR REMOVAL (CSS Failsafe) --- */
 /* This ensures the section is hidden even if the JS rewriter misses it */
 #horizontal-search, 
-.listing-header-search { 
+.listing-header-search,
+#quick-search { 
     display: none !important; 
 }
 
@@ -166,21 +167,25 @@
 .btn-primary, 
 button.btn-primary,
 a.btn-primary {
-    background-color: #000000 !important;
-    border-color: #000000 !important;
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
     color: #ffffff !important;
     border-radius: 0px !important; /* Sharp corners = Luxury */
     text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
+    letter-spacing: 2px;
+    font-size: 11px !important;
+    padding: 15px 30px !important;
+    transition: all 0.3s ease !important;
 }
 
+/* Hover State */
 .btn-primary:hover,
 button.btn-primary:hover,
 a.btn-primary:hover {
-    background-color: var(--accent-color) !important; /* Gold on hover */
+    background-color: var(--accent-color) !important;
     border-color: var(--accent-color) !important;
     color: #fff !important;
+    transform: translateY(-2px); /* Slight lift effect */
 }
 
 /* --- 5. TEXT LOGO (If you haven't styled it yet) --- */
@@ -191,4 +196,36 @@ a.btn-primary:hover {
     font-weight: 500;
     color: #000;
     text-transform: uppercase;
+}
+/* 4. HAMBURGER MENU INTERACTIVITY */
+.navbar-toggler {
+    border: 1px solid rgba(255,255,255, 0.5) !important;
+    border-radius: 0px !important;
+    padding: 10px !important;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.navbar-toggler span {
+    background-color: #fff !important; /* White lines */
+    height: 1px !important;
+    margin: 6px 0 !important;
+    transition: all 0.3s ease;
+}
+
+/* Hamburger Hover Effect (Turns Gold) */
+.navbar-toggler:hover {
+    border-color: var(--accent-color) !important;
+    transform: scale(1.05); /* Grows slightly */
+}
+
+.navbar-toggler:hover span {
+    background-color: var(--accent-color) !important; /* Lines turn gold */
+}
+
+/* 5. BIO IMAGE BORDER (Thinner) */
+/* This targets the container holding your photo in the bio section */
+#froala-editor div[style*="border"] {
+    border-width: 1px !important; /* Thin, elegant line */
+    border-color: var(--accent-color) !important;
 }
