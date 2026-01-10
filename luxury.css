@@ -1,21 +1,111 @@
-/* 1. LOAD FONTS */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600&display=swap');
+/* luxury.css additions */
 
-/* --- GLOBAL VARIABLES --- */
+/* 1. TYPOGRAPHY */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap');
+
 :root {
-    --primary-color: #000000;
-    --accent-color: #c5a059;
-    --font-serif: 'Cormorant Garamond', serif;
-    --font-sans: 'Inter', sans-serif;
-    --navy-blue: #0b1f2e; 
-    --header-height: 100px;
+    --gold: #c5a059;
+    --black: #000000;
+    --white: #ffffff;
+    --serif: 'Cormorant Garamond', serif;
+    --sans: 'Montserrat', sans-serif;
 }
 
-/* 2. TYPOGRAPHY & RESETS */
-body { font-family: var(--font-sans); color: #333; }
-h1, h2, h3, h4, h5, h6, .widgettitle, .content-title h1, .hero-tagline {
-    font-family: var(--font-serif) !important;
+/* 2. HEADER TRANSFORMATION */
+/* Hide original logo image */
+#primary-logo img.logo.primary {
+    display: none !important;
+}
+
+/* Style the new Text Logo */
+.luxury-logo-text {
+    font-family: var(--sans);
+    font-size: 24px;
+    letter-spacing: 3px;
+    font-weight: 500;
+    color: var(--black); /* Or white if header is transparent */
     text-transform: uppercase;
-    letter-spacing: 1px;
+    line-height: 1;
+    display: block;
+    margin-top: 10px;
 }
 
+/* Center the navigation */
+.nav-primary-wrapper {
+    display: flex;
+    justify-content: center;
+    background: transparent;
+}
+
+.nav-primary .nav-item .nav-link {
+    font-family: var(--sans);
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    color: #333 !important;
+}
+
+/* 3. HERO SECTION OVERHAUL */
+/* Hide the BoldTrail Search Box in the Hero */
+#quick-search {
+    display: none !important;
+}
+
+/* New Hero Text Overlay */
+.hero-overlay-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    width: 90%;
+    z-index: 20;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.hero-overlay-container h1 {
+    font-family: var(--serif);
+    font-size: 4rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.hero-overlay-container h2 {
+    font-family: var(--sans);
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+/* 4. CURATED LISTINGS (Masonry Look) */
+.listing-box {
+    border: none !important;
+    box-shadow: none !important;
+}
+.listing-box-image {
+    height: 350px !important; /* Taller, more editorial images */
+    border-radius: 0 !important;
+}
+.listing-box-title h2 a {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    color: #000 !important;
+}
+
+/* 5. PRESS LOGOS GRID */
+.press-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    padding: 50px 0;
+    opacity: 0.6;
+    align-items: center;
+    justify-items: center;
+}
+.press-grid img {
+    max-height: 50px;
+    filter: grayscale(100%);
+}
