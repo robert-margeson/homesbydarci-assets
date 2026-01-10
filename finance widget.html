@@ -1,0 +1,96 @@
+<style>
+/* Container styling */
+.row.one-column {
+    margin: 0 !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background Image Styling */
+.row.one-column img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Darken filter so white text pops clearly */
+    filter: brightness(40%); 
+    -webkit-filter: brightness(40%);
+}
+
+/* Centered Content Overlay */
+.row.one-column .row-column-content {
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    right: 0px;
+    transform: translateY(-50%);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    padding: 20px;
+    z-index: 2; /* Ensures text sits on top of image */
+}
+
+/* Editorial Header Font */
+.row.one-column .row-column-content h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 400;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    color: #ffffff;
+}
+
+/* Clean Body Text Font */
+.row.one-column .row-column-content p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    line-height: 1.6;
+    max-width: 700px;
+    margin-bottom: 40px;
+    opacity: 0.95;
+    color: #ffffff;
+}
+
+/* Luxury White Button Styling */
+.btn-banner {
+    background-color: #ffffff !important;
+    color: #1a1a1a !important; /* Charcoal Text */
+    border: 1px solid #ffffff !important;
+    border-radius: 0px !important; /* Sharp corners */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 18px 45px;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Button Hover State */
+.btn-banner:hover {
+    background-color: transparent !important;
+    color: #ffffff !important; /* Text turns white */
+    border-color: #ffffff !important;
+    transform: translateY(-2px);
+}
+</style>
+
+<div class="row one-column">
+    <div class="col-sm-12" style="min-height: 500px; position: relative;">
+        <img src="https://img.kvcore.com/cdn-cgi/image/fit=scale-down,format=auto/https://dtzulyujzhqiu.cloudfront.net/kvcoredemo14/images/1594658722_YXYBlolB3pNcEOuHmf8KJPPpzrQZtnk99VIhIXq0.jpeg" alt="Get Pre-Approved">
+        
+        <div class="row-column-content">
+            <h3>Get Pre-Approved</h3>
+            <p>Let us help you navigate the mortgage process effortlessly. Schedule your free consultation with High Tide Mortgage now.</p>
+            <a class="btn btn-banner" href="https://buyerprequalify.com/kyle26?partner=darci" target="_blank">Start Your Pre-Approval</a>
+        </div>
+    </div>
+</div>
