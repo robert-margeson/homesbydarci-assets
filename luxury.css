@@ -9,6 +9,16 @@
     --white: #ffffff;
     --serif: 'Cormorant Garamond', serif;
     --sans: 'Montserrat', sans-serif;
+    --primary-color: #000000; 
+    
+    /* CHANGE 2: Keep Gold for thin lines/hovers only */
+    --accent-color: #c5a059; 
+    
+    /* CHANGE 3: Add a light "Greige" for backgrounds (Sand/Beach vibe) */
+    --bg-light: #f9f8f6;
+    
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-sans: 'Inter', sans-serif;
 }
 
 /* 2. HEADER TRANSFORMATION */
@@ -108,4 +118,21 @@
 .press-grid img {
     max-height: 50px;
     filter: grayscale(100%);
+}
+
+.btn-primary {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: #ffffff !important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
+    padding: 15px 30px;
+    border-radius: 0; /* Square corners look more expensive */
+}
+
+/* Hover Effect: Turns Gold */
+.btn-primary:hover {
+    background-color: var(--accent-color) !important;
+    border-color: var(--accent-color) !important;
 }
