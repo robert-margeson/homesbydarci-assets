@@ -243,3 +243,121 @@ a.btn-primary:hover {
     border: 1px solid rgba(14, 42, 71, 0.2) !important;
     padding: 12px !important;
 }
+
+/* --- PROPERTY DETAIL PAGE MAKEOVER --- */
+
+/* 1. MAIN HEADER & ADDRESS */
+/* Targets the property address and price at the top */
+body.listing-detail h1, 
+body.listing-detail .listing-address,
+body.listing-detail .listing-city-state {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-weight: 400 !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #1a1a1a !important; /* Charcoal */
+}
+
+/* Make the price huge and editorial */
+body.listing-detail .listing-price {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 2.5rem !important; /* Bigger */
+    font-weight: 600 !important;
+    color: #0e2a47 !important; /* Navy Accent */
+    border-bottom: none !important; /* Remove any default underlines */
+}
+
+/* 2. PHOTO GALLERY REFINEMENT */
+/* Remove rounded corners and shadows from the main image slider */
+.listing-gallery .owl-stage-outer,
+.listing-gallery img {
+    border-radius: 0px !important;
+    box-shadow: none !important;
+}
+
+/* 3. "REQUEST A SHOWING" SIDEBAR FORM */
+/* Make the sidebar widget look like a high-end invitation */
+.widget.contact {
+    border: 1px solid #e0e0e0 !important; /* Subtle grey border */
+    border-radius: 0px !important; /* Sharp corners */
+    box-shadow: none !important; /* Remove drop shadow for flat look */
+    background-color: #fff !important;
+}
+
+/* Style the Form Inputs (Text fields) */
+.widget.contact .form-control {
+    border-radius: 0px !important;
+    border: 1px solid #ccc !important;
+    background-color: #fcfcfc !important;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    padding: 12px;
+}
+
+/* Input Focus State */
+.widget.contact .form-control:focus {
+    border-color: #0e2a47 !important; /* Turn Navy when clicking */
+    background-color: #fff !important;
+    outline: none;
+}
+
+/* 4. DETAILS GRID (Beds, Baths, SqFt) */
+/* Clean up the boxes containing the stats */
+.listing-detail-attribute {
+    border: none !important; /* Remove borders between items */
+    background: transparent !important;
+}
+
+.listing-detail-attribute .value {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 1.8rem !important;
+    color: #1a1a1a !important;
+}
+
+.listing-detail-attribute .key {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 0.75rem !important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #999 !important;
+}
+
+/* 5. DESCRIPTION TEXT */
+/* Make the property description easier to read */
+.listing-description {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 1.05rem !important;
+    line-height: 1.9 !important; /* More breathing room */
+    color: #444 !important;
+    font-weight: 300 !important;
+}
+
+/* 6. STATUS BADGES (e.g. "Reduced", "New") */
+.listing-box-image-label,
+.label-primary {
+    background-color: #0e2a47 !important; /* Navy Background */
+    border-radius: 0px !important;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 5px 10px;
+}
+
+/* 7. MAP SECTION */
+/* Remove the heavy border around the map */
+#map-google, #map-leaflet {
+    border: none !important;
+    border-top: 1px solid #eee !important;
+}
+
+/* 8. "SIMILAR LISTINGS" HEADER */
+.widgettitle {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 1.8rem !important;
+    border-bottom: 1px solid #0e2a47 !important; /* Navy Underline */
+    padding-bottom: 15px !important;
+    margin-bottom: 25px !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
