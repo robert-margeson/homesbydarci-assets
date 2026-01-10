@@ -10,6 +10,7 @@
     --serif: 'Cormorant Garamond', serif;
     --sans: 'Montserrat', sans-serif;
     --primary-color: #000000; 
+    --navy: #0e2a47;
     
     /* CHANGE 2: Keep Gold for thin lines/hovers only */
     --accent-color: #c5a059; 
@@ -247,23 +248,32 @@ a.btn-primary:hover {
    Only targets pages with transparent headers (like the homepage) */
 body.header-transparent .nav-primary .nav-item .nav-link {
     color: #ffffff !important;
-    text-shadow: 0 1px 5px rgba(0,0,0,0.5); /* Drop shadow for readability */
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6); 
     font-weight: 500;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent; /* Reserve space for underline */
 }
 
 /* Hover State on Homepage (Turns Gold) */
 body.header-transparent .nav-primary .nav-item .nav-link:hover {
-    color: var(--accent-color) !important;
-    text-shadow: none;
+    color: var(--navy) !important;
+    text-shadow: none; /* Remove shadow so it looks clean */
+    
+    /* OPTION B: If Navy is too dark over the water, use White + Underline
+       Uncomment the lines below if you prefer just white:
+       color: #ffffff !important;
+       border-bottom: 2px solid #ffffff; 
+    */
     opacity: 1;
+    transform: translateY(-1px);
 }
 
 /* 2. PRESS SECTION VISIBILITY (Fixes dark text on dark water) */
 .press-section p,
 .press-section span, 
 .press-section h3 {
-    color: #ffffff !important; /* Force white text */
-    text-shadow: 0 1px 4px rgba(0,0,0,0.8); /* Strong shadow */
+    color: #ffffff !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.8); /* Sharp shadow */
     opacity: 0.9 !important;
 }
 
@@ -277,14 +287,13 @@ body.header-transparent .nav-primary .nav-item .nav-link:hover {
 
 /* 4. INTERACTIVE HAMBURGER MENU */
 .navbar-toggler {
-    border-color: rgba(255,255,255, 0.5) !important;
-    transition: all 0.3s ease;
+    border-color: rgba(255,255,255, 0.8) !important;
+    /* transition: all 0.3s ease; */
 }
 
 /* When hovering over the button */
 .navbar-toggler:hover {
-    transform: scale(1.1); /* Grow slightly */
-    border-color: var(--accent-color) !important; /* Border turns Gold */
+    background-color: rgba(255,255,255, 0.1); /* Subtle background fill */    
 }
 
 /* Change the lines inside to Gold on hover */
