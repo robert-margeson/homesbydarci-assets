@@ -240,3 +240,54 @@ a.btn-primary:hover {
     text-shadow: 0 1px 4px rgba(0,0,0,0.5); /* Add drop shadow for readability */
     opacity: 0.9 !important; /* Make them brighter */
 }
+
+/* --- FINAL POLISH: HOMEPAGE MENU & VISIBILITY --- */
+
+/* 1. HOMEPAGE MENU (White + Shadow) 
+   Only targets pages with transparent headers (like the homepage) */
+body.header-transparent .nav-primary .nav-item .nav-link {
+    color: #ffffff !important;
+    text-shadow: 0 1px 5px rgba(0,0,0,0.5); /* Drop shadow for readability */
+    font-weight: 500;
+}
+
+/* Hover State on Homepage (Turns Gold) */
+body.header-transparent .nav-primary .nav-item .nav-link:hover {
+    color: var(--accent-color) !important;
+    text-shadow: none;
+    opacity: 1;
+}
+
+/* 2. PRESS SECTION VISIBILITY (Fixes dark text on dark water) */
+.press-section p,
+.press-section span, 
+.press-section h3 {
+    color: #ffffff !important; /* Force white text */
+    text-shadow: 0 1px 4px rgba(0,0,0,0.8); /* Strong shadow */
+    opacity: 0.9 !important;
+}
+
+/* 3. LOGO FONT UPGRADE (Matches Hero) */
+.luxury-logo-text {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-weight: 400; 
+    letter-spacing: 2px;
+    font-size: 32px; 
+}
+
+/* 4. INTERACTIVE HAMBURGER MENU */
+.navbar-toggler {
+    border-color: rgba(255,255,255, 0.5) !important;
+    transition: all 0.3s ease;
+}
+
+/* When hovering over the button */
+.navbar-toggler:hover {
+    transform: scale(1.1); /* Grow slightly */
+    border-color: var(--accent-color) !important; /* Border turns Gold */
+}
+
+/* Change the lines inside to Gold on hover */
+.navbar-toggler:hover span {
+    background-color: var(--accent-color) !important; 
+}
