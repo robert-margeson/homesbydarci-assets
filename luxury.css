@@ -25,15 +25,21 @@
 
 /* New Text Logo */
 .luxury-logo-text {
-    font-family: 'Cormorant Garamond', serif !important;
-    font-size: 32px;
+    font-family: var(--font-serif) !important;
+    font-size: 34px; /* Slightly larger */
     letter-spacing: 2px;
     font-weight: 400;
     text-transform: uppercase;
     line-height: 1;
-    display: block;
-    margin-top: 10px;
-    color: #000000 !important; /* Default to Black so it shows on white pages */
+    display: inline-block; /* Required for border-bottom to work */
+    
+    /* POSITIONING: Move it up */
+    margin-top: -5px; 
+    padding-bottom: 10px; /* Space between text and underline */
+    
+    /* DEFAULT COLOR (Search Pages) */
+    color: var(--primary-color) !important; 
+    border-bottom: 1px solid var(--primary-color); /* Dark underline by default */
     text-shadow: none;
 }
 
@@ -116,48 +122,44 @@ body.header-transparent .nav-primary .nav-item .nav-link:hover {
 
 /* === DESKTOP RULES (Min-width 992px) === */
 @media (min-width: 992px) {
-    
-    /* Default Desktop Links (Search Pages) -> BLACK */
+    /* Default Links (Search Pages) */
     .nav-primary .nav-item .nav-link {
         font-family: var(--font-sans);
         text-transform: uppercase;
         font-size: 13px;
         letter-spacing: 1.5px;
-        color: #000000 !important;
+        color: var(--primary-color) !important;
         font-weight: 500;
         padding: 15px 20px;
         transition: all 0.3s ease;
     }
 
-    /* Homepage Desktop Override -> WHITE */
+    /* Homepage Links (White) */
     body.header-transparent .nav-primary .nav-item .nav-link {
         color: #ffffff !important;
         text-shadow: 0 1px 3px rgba(0,0,0,0.6);
     }
 
-    /* Homepage Desktop Hover -> NAVY (or remain White with Underline) */
+    /* Homepage Hover */
     body.header-transparent .nav-primary .nav-item .nav-link:hover {
         opacity: 1;
         transform: translateY(-2px);
-        color: #ffffff !important; /* Keep text white */
-        border-bottom: 2px solid #ffffff; /* Add white underline instead of changing color */
+        color: #ffffff !important;
+        border-bottom: 2px solid #ffffff; 
     }
 }
 
 /* === MOBILE RULES (Max-width 991px) === */
 @media (max-width: 991px) {
-    
-    /* 1. Force Menu Background White */
     .nav-primary-wrapper {
         background-color: #fff !important;
         box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
     
-    /* 2. Force Mobile Links to BLACK (Always readable) */
-    /* We use !important to override the 'header-transparent' white rule */
+    /* Force Mobile Links to Charcoal */
     .nav-primary .nav-item .nav-link,
     body.header-transparent .nav-primary .nav-item .nav-link {
-        color: #000000 !important; 
+        color: var(--primary-color) !important; 
         text-shadow: none !important;
         font-family: var(--font-sans);
         font-weight: 600 !important;
@@ -166,11 +168,11 @@ body.header-transparent .nav-primary .nav-item .nav-link:hover {
         text-align: left;
     }
 
-    /* 3. Mobile Hover State -> NAVY (Not White) */
+    /* Mobile Hover -> Navy */
     .nav-primary .nav-item .nav-link:hover,
     body.header-transparent .nav-primary .nav-item .nav-link:hover {
-        color: var(--accent-color) !important; /* Turn Navy */
-        background-color: #f9f9f9 !important; /* Light grey background */
+        color: var(--accent-color) !important; 
+        background-color: #f9f9f9 !important;
         border-bottom: 1px solid #f0f0f0;
     }
 }
@@ -178,6 +180,7 @@ body.header-transparent .nav-primary .nav-item .nav-link:hover {
 /* 2. Homepage Override -> WHITE */
 body.header-transparent .luxury-logo-text {
     color: #ffffff !important;
+    border-bottom: 1px solid #ffffff; /* White underline */
     text-shadow: 0 1px 10px rgba(0,0,0,0.3);
 }
 
@@ -188,6 +191,7 @@ body.header-transparent .luxury-logo-text {
     padding: 8px 12px !important;
     transition: all 0.3s ease;
     cursor: pointer;
+    background-color: transparent !important; /* Start transparent */
 }
 
 .navbar-toggler span {
@@ -197,21 +201,24 @@ body.header-transparent .luxury-logo-text {
     transition: all 0.3s ease;
 }
 
-/* HOVER STATE: Turn Border & Lines to Navy */
+/* HOVER STATE: No White Background */
+/* Instead, we turn the border Navy and scale it slightly for feedback */
 .navbar-toggler:hover {
-    border-color: #0e2a47 !important; /* Navy Border */
-    background-color: rgba(255,255,255, 0.9) !important; /* Slight white fill */
+    background-color: transparent !important; /* Keep transparent */
+    border-color: var(--accent-color) !important; /* Border turns Navy */
+    transform: scale(1.05);
 }
 
+/* Lines turn Navy on hover */
 .navbar-toggler:hover span {
-    background-color: #0e2a47 !important; /* Navy Lines */
+    background-color: var(--accent-color) !important; 
 }
 
 /* --- 6. BUTTONS & UI ELEMENTS --- */
 .btn-primary, 
 button.btn-primary,
 a.btn-primary {
-    background-color: var(--primary-color) !important; /* Black */
+    background-color: var(--primary-color) !important; /* Charcoal */
     border-color: var(--primary-color) !important;
     color: #ffffff !important;
     border-radius: 0px !important;
@@ -233,6 +240,6 @@ a.btn-primary:hover {
 
 /* Bio Photo Border (Navy) */
 #froala-editor div[style*="border"] {
-    border: 1px solid rgba(14, 42, 71, 0.2) !important; /* Subtle Navy */
+    border: 1px solid rgba(14, 42, 71, 0.2) !important;
     padding: 12px !important;
 }
