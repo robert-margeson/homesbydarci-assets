@@ -682,3 +682,54 @@ button[onclick*="saveSearch"] {
 .nav-primary .nav-item .nav-link {
   text-align: center !important;
 }
+
+/* =========================================
+   LOGO UNDERLINE: apply to ALL page headers
+   ========================================= */
+
+/* 1) Your custom text logo (homepage + wherever injected) */
+.luxury-logo-text {
+  border-bottom-color: transparent !important;
+  transition: border-color 0.25s ease !important;
+}
+.luxury-logo-text:hover {
+  border-bottom-color: var(--primary-color) !important;
+}
+body.header-transparent .luxury-logo-text:hover {
+  border-bottom-color: #ffffff !important;
+}
+
+/* 2) KVCore/other pages: logo is often an <a> in #primary-logo */
+#primary-logo a,
+#primary-logo .logo-text,
+.header-logo a {
+  display: inline-block; /* required for underline to behave */
+  border-bottom: 1px solid transparent !important;
+  padding-bottom: 10px;  /* matches your homepage spacing */
+  transition: border-color 0.25s ease !important;
+}
+
+/* Hover underline (non-home pages) */
+#primary-logo a:hover,
+#primary-logo .logo-text:hover,
+.header-logo a:hover {
+  border-bottom-color: var(--primary-color) !important;
+}
+
+/* If a page uses a transparent header variant */
+body.header-transparent #primary-logo a:hover,
+body.header-transparent .header-logo a:hover {
+  border-bottom-color: #ffffff !important;
+}
+
+.navbar-brand {
+  border-bottom: 1px solid transparent !important;
+  padding-bottom: 10px;
+  transition: border-color 0.25s ease;
+}
+.navbar-brand:hover {
+  border-bottom-color: var(--primary-color) !important;
+}
+body.header-transparent .navbar-brand:hover {
+  border-bottom-color: #ffffff !important;
+}
