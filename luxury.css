@@ -39,8 +39,12 @@
     
     /* DEFAULT COLOR (Search Pages) */
     color: var(--primary-color) !important; 
-    border-bottom: 1px solid var(--primary-color); /* Dark underline by default */
+    border-bottom-color: transparent !important;
     text-shadow: none;
+}
+
+.luxury-logo-text:hover {
+  border-bottom-color: var(--primary-color) !important;
 }
 
 /* --- 3. HERO SECTION & SEARCH REMOVAL --- */
@@ -119,6 +123,13 @@ body.header-transparent .nav-primary .nav-item .nav-link:hover {
     border-bottom: 2px solid #ffffff; /* Elegant white underline */
     transform: translateY(-2px);
 }
+
+/* Homepage (transparent header) hover underline stays white */
+body.header-transparent .luxury-logo-text:hover {
+  border-bottom-color: #ffffff !important;
+}
+
+.luxury-logo-text { transition: border-color 0.25s ease; }
 
 /* === DESKTOP RULES (Min-width 992px) === */
 @media (min-width: 992px) {
@@ -658,3 +669,16 @@ button[onclick*="saveSearch"] {
   }
 }
 
+/* Force the menu container to use one alignment consistently */
+.nav-primary-wrapper,
+.nav-primary,
+.nav-primary .navbar-nav {
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+/* Links: keep centered when the hamburger drawer opens */
+.nav-primary .nav-item,
+.nav-primary .nav-item .nav-link {
+  text-align: center !important;
+}
