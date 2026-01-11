@@ -733,3 +733,23 @@ body.header-transparent .header-logo a:hover {
 body.header-transparent .navbar-brand:hover {
   border-bottom-color: #ffffff !important;
 }
+
+
+/* Default: no underline */
+#primary-logo a .luxury-logo-text {
+  display: inline-block;
+  padding-bottom: 6px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+/* Hover: underline appears */
+#primary-logo a:hover .luxury-logo-text {
+  border-bottom-color: currentColor; /* uses white on home, dark on other pages */
+}
+
+/* Keep homepage logo text white, but NOT always underlined */
+body.header-transparent .luxury-logo-text {
+  color: #ffffff !important;
+  border-bottom-color: transparent !important;
+}
