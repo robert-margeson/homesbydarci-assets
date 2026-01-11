@@ -865,3 +865,20 @@ button.btn:focus,
   border-color: rgba(255,255,255,0.35);
 }
 
+.cover.agent.video {
+  background-image: url("https://homesbydarci-assets.pages.dev/hero-poster.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hbd-yt-bg iframe {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.hbd-yt-bg.loaded iframe {
+  opacity: 1;
+}
+
+
