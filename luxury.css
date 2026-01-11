@@ -852,3 +852,16 @@ button.btn:focus,
   color: #ffffff !important;
 }
 
+.work-with-darci-btn {
+  background: #0b0b0b;              /* rich black */
+  color: #ffffff;
+  border: 1px solid rgba(255,255,255,0.15);
+  letter-spacing: 2px;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.work-with-darci-btn:hover {
+  background: #0e2a47;              /* your navy */
+  border-color: rgba(255,255,255,0.35);
+}
+
