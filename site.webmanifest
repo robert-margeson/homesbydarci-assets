@@ -25,14 +25,15 @@
     {
       "src": "https://homesbydarci-assets.pages.dev/darci-margeson-homes-by-darci-realtor-headshot.jpg",
       "sizes": "1280x720",
-      "type": "image/png",
+      "type": "image/jpeg",
       "form_factor": "wide",
       "label": "Homes by Darci Desktop Search"
     },
     {
       "src": "https://homesbydarci-assets.pages.dev/darci-margeson-homes-by-darci-realtor-headshot.jpg",
       "sizes": "750x1334",
-      "type": "image/png",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
       "label": "Homes by Darci Mobile Search"
     }
   ]
