@@ -492,23 +492,3 @@ button[onclick*="saveSearch"] {
     text-transform: uppercase;
     font-size: 11px !important;
 }
-
-/* --- FORCE HERO VIDEO TO SHOW ON MOBILE --- */
-@media (max-width: 991px) {
-  /* Stop the template from forcing an image-only hero */
-  .cover.agent.video {
-    background-image: none !important;
-    background: #000 !important;
-    position: relative !important;
-    overflow: hidden !important;
-    min-height: 60vh !important; /* ensure it has height */
-  }
-
-  /* If the template already includes a video/iframe, force it visible */
-  .cover.agent.video iframe,
-  .cover.agent.video video {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-  }
-}
