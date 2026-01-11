@@ -518,3 +518,107 @@ button[onclick*="saveSearch"] {
   .hero-overlay-container h2 { font-size: 12px !important; letter-spacing: 3px !important; }
   .hero-cta { display: inline-block !important; margin-top: 16px !important; }
 }
+
+/* =========================
+   MOBILE HERO: match desktop look
+   ========================= */
+@media (max-width: 991px) {
+
+  /* 1) Make the hero behave like a "frame" */
+  .cover,
+  .cover.agent,
+  .cover.agent.video {
+    position: relative !important;
+    min-height: 78vh !important;         /* tall enough like desktop */
+    overflow: hidden !important;
+  }
+
+  /* If the template renders the image overlay(s), keep it clean */
+  .cover-image.cover-overlay {
+    position: absolute !important;
+    inset: 0 !important;
+    background-position: center center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    z-index: 1 !important;
+    opacity: 0.65 !important;            /* avoid “washed out”/double-dark */
+  }
+
+  /* 2) Keep your hero text centered and above overlays */
+  .hero-overlay-container {
+    position: absolute !important;
+    left: 50% !important;
+    top: 46% !important;                 /* lift it up a bit */
+    transform: translate(-50%, -50%) !important;
+    width: min(92vw, 520px) !important;
+    z-index: 50 !important;
+    text-align: center !important;
+    padding: 0 10px !important;
+  }
+
+  /* 3) Typography that matches desktop “feel” without huge wraps */
+  .hero-overlay-container h2 {
+    font-size: 11px !important;
+    letter-spacing: 3px !important;
+    margin-bottom: 14px !important;
+    text-transform: uppercase !important;
+  }
+
+  .hero-overlay-container h1 {
+    font-size: 2.4rem !important;        /* key change */
+    line-height: 1.08 !important;
+    letter-spacing: 1px !important;
+    margin: 0 0 16px 0 !important;
+  }
+
+  /* 4) Force the CTA to look like a button on mobile */
+  .hero-overlay-container a.hero-cta,
+  .hero-overlay-container a.btn.btn-outline-white {
+    display: inline-block !important;
+    padding: 12px 22px !important;
+    border: 1px solid #fff !important;
+    color: #fff !important;
+    background: transparent !important;
+    text-decoration: none !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    font-size: 11px !important;
+    border-radius: 0 !important;
+    margin-top: 6px !important;
+  }
+
+  /* 5) Press section: push it LOWER so it doesn’t collide with headline */
+  .press-section {
+    position: relative !important;
+    z-index: 40 !important;
+    margin-top: 52vh !important;         /* moves press row below the CTA */
+    padding: 18px 0 26px 0 !important;
+    border-bottom: 0 !important;
+  }
+
+  .press-section p {
+    font-size: 10px !important;
+    letter-spacing: 2px !important;
+    margin-bottom: 12px !important;
+  }
+
+  /* Make press items wrap into a clean grid instead of random stacking */
+  .press-section > .container > div {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px 18px !important;
+    justify-items: center !important;
+    opacity: 0.75 !important;
+    filter: grayscale(100%) !important;
+  }
+
+  .press-section span {
+    font-size: 16px !important;
+    white-space: nowrap !important;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 390px) {
+  .hero-overlay-container h1 { font-size: 2.15rem !important; }
+}
