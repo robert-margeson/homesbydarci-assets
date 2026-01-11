@@ -622,3 +622,39 @@ button[onclick*="saveSearch"] {
 @media (max-width: 390px) {
   .hero-overlay-container h1 { font-size: 2.15rem !important; }
 }
+
+/* HERO CTA: make desktop match mobile */
+.hero-overlay-container .hero-cta {
+  display: inline-block !important;
+  padding: 12px 28px !important;
+  border: 1px solid #fff !important;
+  color: #fff !important;
+  background: transparent !important;
+  text-decoration: none !important;
+  text-transform: uppercase !important;
+  letter-spacing: 2px !important;
+  font-size: 11px !important;
+  border-radius: 0 !important;
+}
+
+/* Nice hover on desktop */
+@media (min-width: 992px) {
+  .hero-overlay-container .hero-cta:hover {
+    background: rgba(255,255,255,0.12) !important;
+  }
+}
+
+/* Keep your mobile sizing (optional tweak) */
+@media (max-width: 991px) {
+  .hero-overlay-container .hero-cta {
+    padding: 12px 22px !important;
+    font-size: 11px !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .hero-overlay-container {
+    text-shadow: 0 2px 14px rgba(0,0,0,0.35) !important;
+  }
+}
+
