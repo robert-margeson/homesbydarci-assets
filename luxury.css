@@ -492,3 +492,29 @@ button[onclick*="saveSearch"] {
     text-transform: uppercase;
     font-size: 11px !important;
 }
+
+/* Ensure hero container is a positioning context */
+.cover {
+  position: relative !important;
+}
+
+/* Make the background overlay sit below text */
+.cover-image.cover-overlay {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1 !important;
+}
+
+/* Force your hero text/button above everything */
+.hero-overlay-container {
+  z-index: 50 !important;
+  position: absolute !important;
+}
+
+/* Mobile typography so it doesn't look "missing" (too big / clipped) */
+@media (max-width: 991px) {
+  .hero-overlay-container { width: 92% !important; }
+  .hero-overlay-container h1 { font-size: 2.1rem !important; line-height: 1.15 !important; }
+  .hero-overlay-container h2 { font-size: 12px !important; letter-spacing: 3px !important; }
+  .hero-cta { display: inline-block !important; margin-top: 16px !important; }
+}
