@@ -782,3 +782,73 @@ body.header-transparent .luxury-logo-text {
     border-bottom-color: var(--primary-color) !important;
   }
 }
+
+/* =========================================================
+   GLOBAL BUTTON SYSTEM (match "Begin Your Search" style)
+   - Default buttons: outline in primary color, fill on hover
+   - Hero buttons: outline white, subtle white fill on hover
+   ========================================================= */
+
+/* 1) Default button look (site-wide) */
+a.btn,
+button.btn,
+input[type="submit"].btn,
+input[type="button"].btn,
+.btn {
+  background: transparent !important;
+  border: 1px solid var(--primary-color) !important;
+  color: var(--primary-color) !important;
+  border-radius: 0 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 2px !important;
+  font-size: 11px !important;
+  padding: 12px 22px !important;
+  box-shadow: none !important;
+  transition: all 0.25s ease !important;
+}
+
+/* Hover/focus: always readable */
+a.btn:hover,
+button.btn:hover,
+input[type="submit"].btn:hover,
+input[type="button"].btn:hover,
+.btn:hover,
+a.btn:focus,
+button.btn:focus,
+.btn:focus {
+  background: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* 2) FIX: Search filter bar buttons ("More Filters") */
+#search-actions .btn,
+#search-actions .btn-group .btn {
+  background: transparent !important;
+  border: 1px solid var(--primary-color) !important;
+  color: var(--primary-color) !important;
+}
+
+#search-actions .btn:hover,
+#search-actions .btn:focus {
+  background: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: #ffffff !important;
+}
+
+/* 3) Hero CTA (white outline like your Begin Your Search) */
+.hero-overlay-container .btn,
+.hero-overlay-container .hero-cta {
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+  background: transparent !important;
+}
+
+.hero-overlay-container .btn:hover,
+.hero-overlay-container .hero-cta:hover {
+  background: rgba(255,255,255,0.12) !important;
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+}
+
