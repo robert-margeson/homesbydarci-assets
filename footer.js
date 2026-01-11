@@ -11,3 +11,15 @@ document.addEventListener("DOMContentLoaded", function () {
     if (p) p.textContent = "Southern Key Realty • White Glove Service • Treasure Coast Expert";
   }
 });
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const yt = document.querySelector(".hbd-yt-bg iframe");
+    if (!yt) return;
+
+    yt.addEventListener("load", () => {
+      yt.parentElement.classList.add("loaded");
+    });
+  });
+</script>
