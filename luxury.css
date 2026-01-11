@@ -753,3 +753,32 @@ body.header-transparent .luxury-logo-text {
   color: #ffffff !important;
   border-bottom-color: transparent !important;
 }
+
+/* =========================================
+   DESKTOP NAV HOVER (non-home pages)
+   Match homepage: underline + slight lift
+   ========================================= */
+@media (min-width: 992px) {
+
+  /* Normal pages (not transparent header) */
+  body:not(.header-transparent) .nav-primary .nav-item .nav-link {
+    color: var(--primary-color) !important;
+    text-shadow: none !important;
+    border-bottom: 2px solid transparent !important; /* gives us the hover underline */
+    transition: all 0.3s ease !important;
+    display: inline-block; /* underline behaves better */
+  }
+
+  body:not(.header-transparent) .nav-primary .nav-item .nav-link:hover {
+    color: var(--primary-color) !important;   /* keep same color */
+    border-bottom-color: var(--primary-color) !important;
+    transform: translateY(-2px);
+    opacity: 1 !important;
+  }
+
+  /* Optional: show active page underline too */
+  body:not(.header-transparent) .nav-primary .nav-item.active .nav-link,
+  body:not(.header-transparent) .nav-primary .nav-item .nav-link.active {
+    border-bottom-color: var(--primary-color) !important;
+  }
+}
