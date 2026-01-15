@@ -866,7 +866,7 @@ button.btn:focus,
 }
 
 .cover.agent.video {
-  background-image: url("https://homesbydarci-assets.pages.dev/hero-poster.jpg");
+  /* background-image: url("https://homesbydarci-assets.pages.dev/hero-poster.jpg"); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
