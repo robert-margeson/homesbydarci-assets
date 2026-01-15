@@ -8,18 +8,15 @@ document.addEventListener("DOMContentLoaded", function () {
     if (h1) h1.textContent = "Darci Margeson";
 
     const p = wrap.querySelector("p");
-    if (p) p.textContent = "Southern Key Realty • White Glove Service • Treasure Coast Expert";
+    if (p) p.textContent =
+      "Southern Key Realty • White Glove Service • Treasure Coast Expert";
   }
-});
 
+  // YouTube background loader
+  const yt = document.querySelector(".hbd-yt-bg iframe");
+  if (!yt) return;
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const yt = document.querySelector(".hbd-yt-bg iframe");
-    if (!yt) return;
-
-    yt.addEventListener("load", () => {
-      yt.parentElement.classList.add("loaded");
-    });
+  yt.addEventListener("load", () => {
+    yt.parentElement.classList.add("loaded");
   });
-</script>
+});
