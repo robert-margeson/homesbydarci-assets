@@ -1,70 +1,126 @@
 /* --- 1. TYPOGRAPHY & VARIABLES --- */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap');
+/* Fonts loaded via worker <link> tag in headBuilder.js — no @import needed */
 
 :root {
-    /* PRIMARY: Editorial Black (Buttons, Text) */
-    --primary-color: #1a1a1a; 
-    
-    /* ACCENT: Navy Blue (Icons, Hovers, Borders) */
-    --accent-color: #0e2a47; 
+    --primary-color: #1a1a1a;
+    --accent-color: #0e2a47;
     --navy: #0e2a47;
-    
-    /* BACKGROUNDS */
     --bg-light: #f9f8f6;
-    
-    /* FONTS */
     --font-serif: 'Cormorant Garamond', serif;
     --font-sans: 'Montserrat', sans-serif;
 }
 
 /* --- 2. HEADER LOGO --- */
-/* Hide old image logo */
+
 #primary-logo img.logo.primary {
     display: none !important;
 }
 
-/* New Text Logo */
 .luxury-logo-text {
     font-family: var(--font-serif) !important;
-    font-size: 34px; /* Slightly larger */
+    font-size: 34px;
     letter-spacing: 2px;
     font-weight: 400;
     text-transform: uppercase;
     line-height: 1;
-    display: inline-block; /* Required for border-bottom to work */
-    
-    /* POSITIONING: Move it up */
-    margin-top: -5px; 
-    padding-bottom: 10px; /* Space between text and underline */
-    
-    /* DEFAULT COLOR (Search Pages) */
-    color: var(--primary-color) !important; 
-    border-bottom-color: transparent !important;
+    display: inline-block;
+    margin-top: -5px;
+    padding-bottom: 10px;
+    color: var(--primary-color) !important;
+    border-bottom: 2px solid transparent;
     text-shadow: none;
+    transition: border-color 0.25s ease !important;
 }
 
 .luxury-logo-text:hover {
-  border-bottom-color: var(--primary-color) !important;
+    border-bottom-color: var(--primary-color) !important;
+}
+
+/* Homepage: white logo over video */
+body.header-transparent .luxury-logo-text {
+    color: #ffffff !important;
+    border-bottom-color: transparent !important;
+    text-shadow: 0 1px 10px rgba(0,0,0,0.3);
+}
+
+body.header-transparent .luxury-logo-text:hover {
+    border-bottom-color: #ffffff !important;
+}
+
+/* Logo underline for KVCore/other page variants */
+#primary-logo a,
+#primary-logo .logo-text,
+.header-logo a {
+    display: inline-block;
+    border-bottom: 1px solid transparent !important;
+    padding-bottom: 10px;
+    transition: border-color 0.25s ease !important;
+}
+
+#primary-logo a:hover,
+#primary-logo .logo-text:hover,
+.header-logo a:hover {
+    border-bottom-color: var(--primary-color) !important;
+}
+
+body.header-transparent #primary-logo a:hover,
+body.header-transparent .header-logo a:hover {
+    border-bottom-color: #ffffff !important;
+}
+
+/* Nested logo text: hover underline via currentColor */
+#primary-logo a .luxury-logo-text {
+    display: inline-block;
+    padding-bottom: 6px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+#primary-logo a:hover .luxury-logo-text {
+    border-bottom-color: currentColor;
+}
+
+.navbar-brand {
+    border-bottom: 1px solid transparent !important;
+    padding-bottom: 10px;
+    transition: border-color 0.25s ease;
+}
+
+.navbar-brand:hover {
+    border-bottom-color: var(--primary-color) !important;
+}
+
+body.header-transparent .navbar-brand:hover {
+    border-bottom-color: #ffffff !important;
 }
 
 /* --- 3. HERO SECTION & SEARCH REMOVAL --- */
-/* Hide the old search bar completely */
-#horizontal-search, 
+
+#horizontal-search,
 .listing-header-search,
-#quick-search { 
-    display: none !important; 
+#quick-search {
+    display: none !important;
 }
 
-/* Hero Text Overlay */
+.cover {
+    position: relative !important;
+}
+
+.cover-image.cover-overlay {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 1 !important;
+}
+
 .hero-overlay-container {
-    position: absolute;
+    position: absolute !important;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
     color: white;
     width: 90%;
-    z-index: 20;
+    z-index: 50 !important;
     text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
@@ -85,55 +141,71 @@
     margin-bottom: 20px;
 }
 
-/* Press/Authority Section (White text over video) */
+/* Hero CTA button */
+.hero-overlay-container .hero-cta {
+    display: inline-block !important;
+    padding: 12px 28px !important;
+    border: 1px solid #fff !important;
+    color: #fff !important;
+    background: transparent !important;
+    text-decoration: none !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    font-size: 11px !important;
+    border-radius: 0 !important;
+}
+
+/* Press/Authority Section */
 .press-section p,
-.press-section span, 
+.press-section span,
 .press-section h3 {
     color: #ffffff !important;
     text-shadow: 0 1px 3px rgba(0,0,0,0.8);
     opacity: 0.95 !important;
 }
 
-/* --- 4. NAVIGATION MENUS (The Fixes) --- */
+/* --- 4. NAVIGATION --- */
 
-/* Center the desktop nav */
+.nav-primary-wrapper,
+.nav-primary,
+.nav-primary .navbar-nav {
+    justify-content: center !important;
+    text-align: center !important;
+}
+
 .nav-primary-wrapper {
     display: flex;
-    justify-content: center;
     background: transparent;
 }
 
-/* DEFAULT LINKS (Desktop, transparent header) */
+.nav-primary .nav-item,
+.nav-primary .nav-item .nav-link {
+    text-align: center !important;
+}
+
+/* Homepage (transparent header): white links over video */
 body.header-transparent .nav-primary .nav-item .nav-link {
     font-family: var(--font-sans);
     text-transform: uppercase;
     font-size: 13px;
     letter-spacing: 1.5px;
-    color: #ffffff !important; /* White text over video */
+    color: #ffffff !important;
     text-shadow: 0 1px 4px rgba(0,0,0,0.6);
     font-weight: 500;
     transition: all 0.3s ease;
     border-bottom: 2px solid transparent;
 }
 
-/* HOVER STATE (Desktop) */
 body.header-transparent .nav-primary .nav-item .nav-link:hover {
     color: #ffffff !important;
     opacity: 1;
-    border-bottom: 2px solid #ffffff; /* Elegant white underline */
+    border-bottom: 2px solid #ffffff;
     transform: translateY(-2px);
 }
 
-/* Homepage (transparent header) hover underline stays white */
-body.header-transparent .luxury-logo-text:hover {
-  border-bottom-color: #ffffff !important;
-}
-
-.luxury-logo-text { transition: border-color 0.25s ease; }
-
-/* === DESKTOP RULES (Min-width 992px) === */
+/* Desktop nav */
 @media (min-width: 992px) {
-    /* Default Links (Search Pages) */
+    /* Default links (non-transparent pages) */
     .nav-primary .nav-item .nav-link {
         font-family: var(--font-sans);
         text-transform: uppercase;
@@ -145,32 +217,57 @@ body.header-transparent .luxury-logo-text:hover {
         transition: all 0.3s ease;
     }
 
-    /* Homepage Links (White) */
+    body:not(.header-transparent) .nav-primary .nav-item .nav-link {
+        text-shadow: none !important;
+        border-bottom: 2px solid transparent !important;
+        display: inline-block;
+    }
+
+    body:not(.header-transparent) .nav-primary .nav-item .nav-link:hover {
+        color: var(--primary-color) !important;
+        border-bottom-color: var(--primary-color) !important;
+        transform: translateY(-2px);
+        opacity: 1 !important;
+    }
+
+    body:not(.header-transparent) .nav-primary .nav-item.active .nav-link,
+    body:not(.header-transparent) .nav-primary .nav-item .nav-link.active {
+        border-bottom-color: var(--primary-color) !important;
+    }
+
+    /* Homepage links override to white */
     body.header-transparent .nav-primary .nav-item .nav-link {
         color: #ffffff !important;
         text-shadow: 0 1px 3px rgba(0,0,0,0.6);
     }
 
-    /* Homepage Hover */
     body.header-transparent .nav-primary .nav-item .nav-link:hover {
         opacity: 1;
         transform: translateY(-2px);
         color: #ffffff !important;
-        border-bottom: 2px solid #ffffff; 
+        border-bottom: 2px solid #ffffff;
+    }
+
+    /* Hero text shadow and CTA hover */
+    .hero-overlay-container {
+        text-shadow: 0 2px 14px rgba(0,0,0,0.35) !important;
+    }
+
+    .hero-overlay-container .hero-cta:hover {
+        background: rgba(255,255,255,0.12) !important;
     }
 }
 
-/* === MOBILE RULES (Max-width 991px) === */
+/* Mobile nav */
 @media (max-width: 991px) {
     .nav-primary-wrapper {
         background-color: #fff !important;
         box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
-    
-    /* Force Mobile Links to Charcoal */
+
     .nav-primary .nav-item .nav-link,
     body.header-transparent .nav-primary .nav-item .nav-link {
-        color: var(--primary-color) !important; 
+        color: var(--primary-color) !important;
         text-shadow: none !important;
         font-family: var(--font-sans);
         font-weight: 600 !important;
@@ -179,30 +276,23 @@ body.header-transparent .luxury-logo-text:hover {
         text-align: left;
     }
 
-    /* Mobile Hover -> Navy */
     .nav-primary .nav-item .nav-link:hover,
     body.header-transparent .nav-primary .nav-item .nav-link:hover {
-        color: var(--accent-color) !important; 
+        color: var(--accent-color) !important;
         background-color: #f9f9f9 !important;
         border-bottom: 1px solid #f0f0f0;
     }
 }
 
-/* 2. Homepage Override -> WHITE */
-body.header-transparent .luxury-logo-text {
-    color: #ffffff !important;
-    border-bottom: 1px solid #ffffff; /* White underline */
-    text-shadow: 0 1px 10px rgba(0,0,0,0.3);
-}
+/* --- 5. HAMBURGER BUTTON --- */
 
-/* --- 5. HAMBURGER BUTTON (Navy Update) --- */
 .navbar-toggler {
     border: 1px solid rgba(255,255,255, 0.6) !important;
     border-radius: 0px !important;
     padding: 8px 12px !important;
     transition: all 0.3s ease;
     cursor: pointer;
-    background-color: transparent !important; /* Start transparent */
+    background-color: transparent !important;
 }
 
 .navbar-toggler span {
@@ -212,24 +302,54 @@ body.header-transparent .luxury-logo-text {
     transition: all 0.3s ease;
 }
 
-/* HOVER STATE: No White Background */
-/* Instead, we turn the border Navy and scale it slightly for feedback */
 .navbar-toggler:hover {
-    background-color: transparent !important; /* Keep transparent */
-    border-color: var(--accent-color) !important; /* Border turns Navy */
+    background-color: transparent !important;
+    border-color: var(--accent-color) !important;
     transform: scale(1.05);
 }
 
-/* Lines turn Navy on hover */
 .navbar-toggler:hover span {
-    background-color: var(--accent-color) !important; 
+    background-color: var(--accent-color) !important;
 }
 
-/* --- 6. BUTTONS & UI ELEMENTS --- */
-.btn-primary, 
+/* --- 6. GLOBAL BUTTON SYSTEM --- */
+
+a.btn,
+button.btn,
+input[type="submit"].btn,
+input[type="button"].btn,
+.btn {
+    background: transparent !important;
+    border: 1px solid var(--primary-color) !important;
+    color: var(--primary-color) !important;
+    border-radius: 0 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    font-size: 11px !important;
+    padding: 12px 22px !important;
+    box-shadow: none !important;
+    transition: all 0.25s ease !important;
+}
+
+a.btn:hover,
+button.btn:hover,
+input[type="submit"].btn:hover,
+input[type="button"].btn:hover,
+.btn:hover,
+a.btn:focus,
+button.btn:focus,
+.btn:focus {
+    background: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+/* btn-primary: filled by default */
+.btn-primary,
 button.btn-primary,
 a.btn-primary {
-    background-color: var(--primary-color) !important; /* Charcoal */
+    background-color: var(--primary-color) !important;
     border-color: var(--primary-color) !important;
     color: #ffffff !important;
     border-radius: 0px !important;
@@ -240,62 +360,105 @@ a.btn-primary {
     transition: all 0.3s ease !important;
 }
 
-/* Hover: Navy */
 .btn-primary:hover,
 button.btn-primary:hover,
 a.btn-primary:hover {
-    background-color: var(--accent-color) !important; /* Navy */
+    background-color: var(--accent-color) !important;
     border-color: var(--accent-color) !important;
     transform: translateY(-2px);
 }
 
-/* Bio Photo Border (Navy) */
+/* Hero CTA buttons (white outline) */
+.hero-overlay-container .btn,
+.hero-overlay-container .hero-cta {
+    border-color: #ffffff !important;
+    color: #ffffff !important;
+    background: transparent !important;
+}
+
+.hero-overlay-container .btn:hover,
+.hero-overlay-container .hero-cta:hover {
+    background: rgba(255,255,255,0.12) !important;
+    border-color: #ffffff !important;
+    color: #ffffff !important;
+}
+
+/* Search filter bar buttons */
+#search-actions .btn,
+#search-actions .btn-group .btn {
+    background: transparent !important;
+    border: 1px solid var(--primary-color) !important;
+    color: var(--primary-color) !important;
+}
+
+#search-actions .btn:hover,
+#search-actions .btn:focus {
+    background: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: #ffffff !important;
+}
+
+/* Save Search button */
+#search-actions .btn-primary,
+button[onclick*="saveSearch"] {
+    background-color: #1a1a1a !important;
+    color: #fff !important;
+    border: 1px solid #1a1a1a !important;
+}
+
+/* Work with Darci button */
+.work-with-darci-btn {
+    background: #0b0b0b;
+    color: #ffffff;
+    border: 1px solid rgba(255,255,255,0.15);
+    letter-spacing: 2px;
+    transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.work-with-darci-btn:hover {
+    background: #0e2a47;
+    border-color: rgba(255,255,255,0.35);
+}
+
+/* Bio Photo Border */
 #froala-editor div[style*="border"] {
     border: 1px solid rgba(14, 42, 71, 0.2) !important;
     padding: 12px !important;
 }
 
-/* --- PROPERTY DETAIL PAGE MAKEOVER --- */
+/* --- 7. PROPERTY DETAIL PAGE --- */
 
-/* 1. MAIN HEADER & ADDRESS */
-/* Targets the property address and price at the top */
-body.listing-detail h1, 
+body.listing-detail h1,
 body.listing-detail .listing-address,
 body.listing-detail .listing-city-state {
     font-family: 'Cormorant Garamond', serif !important;
     font-weight: 400 !important;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #1a1a1a !important; /* Charcoal */
+    color: #1a1a1a !important;
 }
 
-/* Make the price huge and editorial */
 body.listing-detail .listing-price {
     font-family: 'Cormorant Garamond', serif !important;
-    font-size: 2.5rem !important; /* Bigger */
+    font-size: 2.5rem !important;
     font-weight: 600 !important;
-    color: #0e2a47 !important; /* Navy Accent */
-    border-bottom: none !important; /* Remove any default underlines */
+    color: #0e2a47 !important;
+    border-bottom: none !important;
 }
 
-/* 2. PHOTO GALLERY REFINEMENT */
-/* Remove rounded corners and shadows from the main image slider */
 .listing-gallery .owl-stage-outer,
 .listing-gallery img {
     border-radius: 0px !important;
     box-shadow: none !important;
 }
 
-/* 3. "REQUEST A SHOWING" SIDEBAR FORM */
-/* Make the sidebar widget look like a high-end invitation */
 .widget.contact {
-    border: 1px solid #e0e0e0 !important; /* Subtle grey border */
-    border-radius: 0px !important; /* Sharp corners */
-    box-shadow: none !important; /* Remove drop shadow for flat look */
+    border: 1px solid #e0e0e0 !important;
+    border-radius: 0px !important;
+    box-shadow: none !important;
     background-color: #fff !important;
 }
 
-/* Style the Form Inputs (Text fields) */
 .widget.contact .form-control {
     border-radius: 0px !important;
     border: 1px solid #ccc !important;
@@ -305,17 +468,14 @@ body.listing-detail .listing-price {
     padding: 12px;
 }
 
-/* Input Focus State */
 .widget.contact .form-control:focus {
-    border-color: #0e2a47 !important; /* Turn Navy when clicking */
+    border-color: #0e2a47 !important;
     background-color: #fff !important;
     outline: none;
 }
 
-/* 4. DETAILS GRID (Beds, Baths, SqFt) */
-/* Clean up the boxes containing the stats */
 .listing-detail-attribute {
-    border: none !important; /* Remove borders between items */
+    border: none !important;
     background: transparent !important;
 }
 
@@ -333,20 +493,17 @@ body.listing-detail .listing-price {
     color: #999 !important;
 }
 
-/* 5. DESCRIPTION TEXT */
-/* Make the property description easier to read */
 .listing-description {
     font-family: 'Montserrat', sans-serif !important;
     font-size: 1.05rem !important;
-    line-height: 1.9 !important; /* More breathing room */
+    line-height: 1.9 !important;
     color: #444 !important;
     font-weight: 300 !important;
 }
 
-/* 6. STATUS BADGES (e.g. "Reduced", "New") */
 .listing-box-image-label,
 .label-primary {
-    background-color: #0e2a47 !important; /* Navy Background */
+    background-color: #0e2a47 !important;
     border-radius: 0px !important;
     font-family: 'Montserrat', sans-serif;
     font-size: 10px;
@@ -355,92 +512,53 @@ body.listing-detail .listing-price {
     padding: 5px 10px;
 }
 
-/* 7. MAP SECTION */
-/* Remove the heavy border around the map */
 #map-google, #map-leaflet {
     border: none !important;
     border-top: 1px solid #eee !important;
 }
 
-/* 8. "SIMILAR LISTINGS" HEADER */
 .widgettitle {
     font-family: 'Cormorant Garamond', serif !important;
     font-size: 1.8rem !important;
-    border-bottom: 1px solid #0e2a47 !important; /* Navy Underline */
+    border-bottom: 1px solid #0e2a47 !important;
     padding-bottom: 15px !important;
     margin-bottom: 25px !important;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-/* --- SEARCH RESULTS PAGE REFINEMENT --- */
+/* --- 8. SEARCH RESULTS PAGE --- */
 
-/* 1. FILTER BAR (Top Right) */
-/* Targets "Map", "Days on Website", "More Filters" */
 #search-actions {
     background-color: #fff !important;
     border-bottom: 1px solid #eee !important;
     padding: 15px 20px !important;
 }
 
-/* Style the Filter Buttons */
-#search-actions .btn,
-#search-actions .btn-group .btn {
-    background-color: #fff !important;
-    border: 1px solid #e0e0e0 !important;
-    color: #1a1a1a !important; /* Charcoal text */
-    border-radius: 0px !important; /* Sharp corners */
-    font-family: 'Montserrat', sans-serif !important;
-    font-size: 11px !important;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: none !important;
-}
-
-/* Hover State for Filters */
-#search-actions .btn:hover {
-    border-color: #0e2a47 !important; /* Navy Border */
-    color: #0e2a47 !important;
-}
-
-/* "Save Search" Button (Make it pop) */
-#search-actions .btn-primary,
-button[onclick*="saveSearch"] {
-    background-color: #1a1a1a !important; /* Solid Charcoal */
-    color: #fff !important;
-    border: 1px solid #1a1a1a !important;
-}
-
-/* 2. LISTING CARDS (The Homes) */
-/* Remove the heavy drop shadow and borders for a clean "gallery" look */
 #map-listings-container .card,
 .listing-box {
     border: none !important;
     box-shadow: none !important;
     background-color: #fff !important;
-    margin-bottom: 40px !important; /* More breathing room between homes */
+    margin-bottom: 40px !important;
 }
 
-/* Images */
 #map-listings-container .card-img-top,
 .listing-box-image {
     border-radius: 0px !important;
-    filter: brightness(1.02); /* Slight brightness boost */
+    filter: brightness(1.02);
 }
 
-/* 3. PRICE & ADDRESS TYPOGRAPHY */
-/* Price - Big Serif Font */
 .card-title .card-price,
 .listing-box-title h3 {
     font-family: 'Cormorant Garamond', serif !important;
     font-size: 26px !important;
     font-weight: 500 !important;
-    color: #0e2a47 !important; /* Navy Accent */
-    background: transparent !important; /* Remove any default highlight */
+    color: #0e2a47 !important;
+    background: transparent !important;
     padding: 0 !important;
 }
 
-/* Address - Clean Sans Font */
 .card-title .card-address,
 .listing-box-title h2,
 .card-footer .card-city {
@@ -452,7 +570,6 @@ button[onclick*="saveSearch"] {
     margin-top: 5px !important;
 }
 
-/* 4. STATS ROW (Beds/Baths/SqFt) */
 .card-footer .size-data {
     border-top: 1px solid #f0f0f0 !important;
     padding-top: 10px !important;
@@ -473,11 +590,9 @@ button[onclick*="saveSearch"] {
     color: #999 !important;
 }
 
-/* 5. "JUST LISTED" / STATUS BADGES */
-/* Change standard black/orange badges to Navy */
 .card-img-top .card-badge,
 .listing-box-image-label {
-    background-color: #0e2a47 !important; /* Navy */
+    background-color: #0e2a47 !important;
     border-radius: 0px !important;
     font-family: 'Montserrat', sans-serif !important;
     font-size: 9px !important;
@@ -488,11 +603,9 @@ button[onclick*="saveSearch"] {
     left: 15px !important;
 }
 
-/* 6. HOVER ACTIONS (View Details / Save) */
-/* The overlay that appears when you mouse over a home */
 .card-actions,
 .listing-box-image-links {
-    background-color: rgba(14, 42, 71, 0.9) !important; /* Navy Transparency */
+    background-color: rgba(14, 42, 71, 0.9) !important;
 }
 
 .card-actions a,
@@ -504,381 +617,113 @@ button[onclick*="saveSearch"] {
     font-size: 11px !important;
 }
 
-/* Ensure hero container is a positioning context */
-.cover {
-  position: relative !important;
-}
+/* --- 9. MOBILE HERO --- */
 
-/* Make the background overlay sit below text */
-.cover-image.cover-overlay {
-  position: absolute !important;
-  inset: 0 !important;
-  z-index: 1 !important;
-}
-
-/* Force your hero text/button above everything */
-.hero-overlay-container {
-  z-index: 50 !important;
-  position: absolute !important;
-}
-
-/* Mobile typography so it doesn't look "missing" (too big / clipped) */
 @media (max-width: 991px) {
-  .hero-overlay-container { width: 92% !important; }
-  .hero-overlay-container h1 { font-size: 2.1rem !important; line-height: 1.15 !important; }
-  .hero-overlay-container h2 { font-size: 12px !important; letter-spacing: 3px !important; }
-  .hero-cta { display: inline-block !important; margin-top: 16px !important; }
+    .cover,
+    .cover.agent,
+    .cover.agent.video {
+        position: relative !important;
+        min-height: 78vh !important;
+        overflow: hidden !important;
+    }
+
+    .cover-image.cover-overlay {
+        position: absolute !important;
+        inset: 0 !important;
+        background-position: center center !important;
+        background-size: cover !important;
+        background-repeat: no-repeat !important;
+        z-index: 1 !important;
+        opacity: 0.65 !important;
+    }
+
+    .hero-overlay-container {
+        position: absolute !important;
+        left: 50% !important;
+        top: 46% !important;
+        transform: translate(-50%, -50%) !important;
+        width: min(92vw, 520px) !important;
+        z-index: 50 !important;
+        text-align: center !important;
+        padding: 0 10px !important;
+    }
+
+    .hero-overlay-container h2 {
+        font-size: 11px !important;
+        letter-spacing: 3px !important;
+        margin-bottom: 14px !important;
+        text-transform: uppercase !important;
+    }
+
+    .hero-overlay-container h1 {
+        font-size: 2.4rem !important;
+        line-height: 1.08 !important;
+        letter-spacing: 1px !important;
+        margin: 0 0 16px 0 !important;
+    }
+
+    .hero-overlay-container a.hero-cta,
+    .hero-overlay-container a.btn.btn-outline-white {
+        display: inline-block !important;
+        padding: 12px 22px !important;
+        border: 1px solid #fff !important;
+        color: #fff !important;
+        background: transparent !important;
+        text-decoration: none !important;
+        text-transform: uppercase !important;
+        letter-spacing: 2px !important;
+        font-size: 11px !important;
+        border-radius: 0 !important;
+        margin-top: 6px !important;
+    }
+
+    .press-section {
+        position: relative !important;
+        z-index: 40 !important;
+        margin-top: 52vh !important;
+        padding: 18px 0 26px 0 !important;
+        border-bottom: 0 !important;
+    }
+
+    .press-section p {
+        font-size: 10px !important;
+        letter-spacing: 2px !important;
+        margin-bottom: 12px !important;
+    }
+
+    .press-section > .container > div {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 14px 18px !important;
+        justify-items: center !important;
+        opacity: 0.75 !important;
+        filter: grayscale(100%) !important;
+    }
+
+    .press-section span {
+        font-size: 16px !important;
+        white-space: nowrap !important;
+    }
 }
 
-/* =========================
-   MOBILE HERO: match desktop look
-   ========================= */
-@media (max-width: 991px) {
-
-  /* 1) Make the hero behave like a "frame" */
-  .cover,
-  .cover.agent,
-  .cover.agent.video {
-    position: relative !important;
-    min-height: 78vh !important;         /* tall enough like desktop */
-    overflow: hidden !important;
-  }
-
-  /* If the template renders the image overlay(s), keep it clean */
-  .cover-image.cover-overlay {
-    position: absolute !important;
-    inset: 0 !important;
-    background-position: center center !important;
-    background-size: cover !important;
-    background-repeat: no-repeat !important;
-    z-index: 1 !important;
-    opacity: 0.65 !important;            /* avoid “washed out”/double-dark */
-  }
-
-  /* 2) Keep your hero text centered and above overlays */
-  .hero-overlay-container {
-    position: absolute !important;
-    left: 50% !important;
-    top: 46% !important;                 /* lift it up a bit */
-    transform: translate(-50%, -50%) !important;
-    width: min(92vw, 520px) !important;
-    z-index: 50 !important;
-    text-align: center !important;
-    padding: 0 10px !important;
-  }
-
-  /* 3) Typography that matches desktop “feel” without huge wraps */
-  .hero-overlay-container h2 {
-    font-size: 11px !important;
-    letter-spacing: 3px !important;
-    margin-bottom: 14px !important;
-    text-transform: uppercase !important;
-  }
-
-  .hero-overlay-container h1 {
-    font-size: 2.4rem !important;        /* key change */
-    line-height: 1.08 !important;
-    letter-spacing: 1px !important;
-    margin: 0 0 16px 0 !important;
-  }
-
-  /* 4) Force the CTA to look like a button on mobile */
-  .hero-overlay-container a.hero-cta,
-  .hero-overlay-container a.btn.btn-outline-white {
-    display: inline-block !important;
-    padding: 12px 22px !important;
-    border: 1px solid #fff !important;
-    color: #fff !important;
-    background: transparent !important;
-    text-decoration: none !important;
-    text-transform: uppercase !important;
-    letter-spacing: 2px !important;
-    font-size: 11px !important;
-    border-radius: 0 !important;
-    margin-top: 6px !important;
-  }
-
-  /* 5) Press section: push it LOWER so it doesn’t collide with headline */
-  .press-section {
-    position: relative !important;
-    z-index: 40 !important;
-    margin-top: 52vh !important;         /* moves press row below the CTA */
-    padding: 18px 0 26px 0 !important;
-    border-bottom: 0 !important;
-  }
-
-  .press-section p {
-    font-size: 10px !important;
-    letter-spacing: 2px !important;
-    margin-bottom: 12px !important;
-  }
-
-  /* Make press items wrap into a clean grid instead of random stacking */
-  .press-section > .container > div {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 14px 18px !important;
-    justify-items: center !important;
-    opacity: 0.75 !important;
-    filter: grayscale(100%) !important;
-  }
-
-  .press-section span {
-    font-size: 16px !important;
-    white-space: nowrap !important;
-  }
-}
-
-/* Extra small phones */
 @media (max-width: 390px) {
-  .hero-overlay-container h1 { font-size: 2.15rem !important; }
+    .hero-overlay-container h1 { font-size: 2.15rem !important; }
 }
 
-/* HERO CTA: make desktop match mobile */
-.hero-overlay-container .hero-cta {
-  display: inline-block !important;
-  padding: 12px 28px !important;
-  border: 1px solid #fff !important;
-  color: #fff !important;
-  background: transparent !important;
-  text-decoration: none !important;
-  text-transform: uppercase !important;
-  letter-spacing: 2px !important;
-  font-size: 11px !important;
-  border-radius: 0 !important;
-}
-
-/* Nice hover on desktop */
-@media (min-width: 992px) {
-  .hero-overlay-container .hero-cta:hover {
-    background: rgba(255,255,255,0.12) !important;
-  }
-}
-
-/* Keep your mobile sizing (optional tweak) */
-@media (max-width: 991px) {
-  .hero-overlay-container .hero-cta {
-    padding: 12px 22px !important;
-    font-size: 11px !important;
-  }
-}
-
-@media (min-width: 992px) {
-  .hero-overlay-container {
-    text-shadow: 0 2px 14px rgba(0,0,0,0.35) !important;
-  }
-}
-
-/* Force the menu container to use one alignment consistently */
-.nav-primary-wrapper,
-.nav-primary,
-.nav-primary .navbar-nav {
-  justify-content: center !important;
-  text-align: center !important;
-}
-
-/* Links: keep centered when the hamburger drawer opens */
-.nav-primary .nav-item,
-.nav-primary .nav-item .nav-link {
-  text-align: center !important;
-}
-
-/* =========================================
-   LOGO UNDERLINE: apply to ALL page headers
-   ========================================= */
-
-/* 1) Your custom text logo (homepage + wherever injected) */
-.luxury-logo-text {
-  border-bottom-color: transparent !important;
-  transition: border-color 0.25s ease !important;
-}
-.luxury-logo-text:hover {
-  border-bottom-color: var(--primary-color) !important;
-}
-body.header-transparent .luxury-logo-text:hover {
-  border-bottom-color: #ffffff !important;
-}
-
-/* 2) KVCore/other pages: logo is often an <a> in #primary-logo */
-#primary-logo a,
-#primary-logo .logo-text,
-.header-logo a {
-  display: inline-block; /* required for underline to behave */
-  border-bottom: 1px solid transparent !important;
-  padding-bottom: 10px;  /* matches your homepage spacing */
-  transition: border-color 0.25s ease !important;
-}
-
-/* Hover underline (non-home pages) */
-#primary-logo a:hover,
-#primary-logo .logo-text:hover,
-.header-logo a:hover {
-  border-bottom-color: var(--primary-color) !important;
-}
-
-/* If a page uses a transparent header variant */
-body.header-transparent #primary-logo a:hover,
-body.header-transparent .header-logo a:hover {
-  border-bottom-color: #ffffff !important;
-}
-
-.navbar-brand {
-  border-bottom: 1px solid transparent !important;
-  padding-bottom: 10px;
-  transition: border-color 0.25s ease;
-}
-.navbar-brand:hover {
-  border-bottom-color: var(--primary-color) !important;
-}
-body.header-transparent .navbar-brand:hover {
-  border-bottom-color: #ffffff !important;
-}
-
-
-/* Default: no underline */
-#primary-logo a .luxury-logo-text {
-  display: inline-block;
-  padding-bottom: 6px;
-  border-bottom: 2px solid transparent;
-  transition: border-color 0.3s ease;
-}
-
-/* Hover: underline appears */
-#primary-logo a:hover .luxury-logo-text {
-  border-bottom-color: currentColor; /* uses white on home, dark on other pages */
-}
-
-/* Keep homepage logo text white, but NOT always underlined */
-body.header-transparent .luxury-logo-text {
-  color: #ffffff !important;
-  border-bottom-color: transparent !important;
-}
-
-/* =========================================
-   DESKTOP NAV HOVER (non-home pages)
-   Match homepage: underline + slight lift
-   ========================================= */
-@media (min-width: 992px) {
-
-  /* Normal pages (not transparent header) */
-  body:not(.header-transparent) .nav-primary .nav-item .nav-link {
-    color: var(--primary-color) !important;
-    text-shadow: none !important;
-    border-bottom: 2px solid transparent !important; /* gives us the hover underline */
-    transition: all 0.3s ease !important;
-    display: inline-block; /* underline behaves better */
-  }
-
-  body:not(.header-transparent) .nav-primary .nav-item .nav-link:hover {
-    color: var(--primary-color) !important;   /* keep same color */
-    border-bottom-color: var(--primary-color) !important;
-    transform: translateY(-2px);
-    opacity: 1 !important;
-  }
-
-  /* Optional: show active page underline too */
-  body:not(.header-transparent) .nav-primary .nav-item.active .nav-link,
-  body:not(.header-transparent) .nav-primary .nav-item .nav-link.active {
-    border-bottom-color: var(--primary-color) !important;
-  }
-}
-
-/* =========================================================
-   GLOBAL BUTTON SYSTEM (match "Begin Your Search" style)
-   - Default buttons: outline in primary color, fill on hover
-   - Hero buttons: outline white, subtle white fill on hover
-   ========================================================= */
-
-/* 1) Default button look (site-wide) */
-a.btn,
-button.btn,
-input[type="submit"].btn,
-input[type="button"].btn,
-.btn {
-  background: transparent !important;
-  border: 1px solid var(--primary-color) !important;
-  color: var(--primary-color) !important;
-  border-radius: 0 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 2px !important;
-  font-size: 11px !important;
-  padding: 12px 22px !important;
-  box-shadow: none !important;
-  transition: all 0.25s ease !important;
-}
-
-/* Hover/focus: always readable */
-a.btn:hover,
-button.btn:hover,
-input[type="submit"].btn:hover,
-input[type="button"].btn:hover,
-.btn:hover,
-a.btn:focus,
-button.btn:focus,
-.btn:focus {
-  background: var(--primary-color) !important;
-  border-color: var(--primary-color) !important;
-  color: #ffffff !important;
-  opacity: 1 !important;
-}
-
-/* 2) FIX: Search filter bar buttons ("More Filters") */
-#search-actions .btn,
-#search-actions .btn-group .btn {
-  background: transparent !important;
-  border: 1px solid var(--primary-color) !important;
-  color: var(--primary-color) !important;
-}
-
-#search-actions .btn:hover,
-#search-actions .btn:focus {
-  background: var(--primary-color) !important;
-  border-color: var(--primary-color) !important;
-  color: #ffffff !important;
-}
-
-/* 3) Hero CTA (white outline like your Begin Your Search) */
-.hero-overlay-container .btn,
-.hero-overlay-container .hero-cta {
-  border-color: #ffffff !important;
-  color: #ffffff !important;
-  background: transparent !important;
-}
-
-.hero-overlay-container .btn:hover,
-.hero-overlay-container .hero-cta:hover {
-  background: rgba(255,255,255,0.12) !important;
-  border-color: #ffffff !important;
-  color: #ffffff !important;
-}
-
-.work-with-darci-btn {
-  background: #0b0b0b;              /* rich black */
-  color: #ffffff;
-  border: 1px solid rgba(255,255,255,0.15);
-  letter-spacing: 2px;
-  transition: background 0.25s ease, border-color 0.25s ease;
-}
-
-.work-with-darci-btn:hover {
-  background: #0e2a47;              /* your navy */
-  border-color: rgba(255,255,255,0.35);
-}
+/* --- 10. VIDEO BACKGROUND --- */
 
 .cover.agent.video {
-  /* background-image: url("https://homesbydarci-assets.pages.dev/hero-poster.jpg"); */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .hbd-yt-bg iframe {
-  opacity: 0;
-  transition: opacity 0.8s ease;
+    opacity: 0;
+    transition: opacity 0.8s ease;
 }
 
 .hbd-yt-bg.loaded iframe {
-  opacity: 1;
+    opacity: 1;
 }
-
-
