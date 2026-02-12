@@ -141,6 +141,15 @@ body.header-transparent .navbar-brand:hover {
     margin-bottom: 20px;
 }
 
+.hero-overlay-container p {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
 /* Hero CTA button */
 .hero-overlay-container .hero-cta {
     display: inline-block !important;
