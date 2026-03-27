@@ -232,6 +232,11 @@ body.header-transparent .nav-primary .nav-item .nav-link:hover {
 
 /* Desktop nav */
 @media (min-width: 992px) {
+    .luxury-logo-text {
+        font-size: 28px;
+        letter-spacing: 1.2px;
+    }
+    
     /* Default links (non-transparent pages) */
     .nav-primary .nav-item .nav-link {
         font-family: var(--font-sans);
