@@ -95,11 +95,12 @@ body.header-transparent .header-logo a:hover {
     border-bottom: 2px solid transparent;
     transition: border-color 0.3s ease;
 }
-*/
+
 
 #primary-logo a:hover .luxury-logo-text {
     border-bottom-color: currentColor;
 }
+*/
 
 .navbar-brand {
     border-bottom: 1px solid transparent !important;
