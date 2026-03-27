@@ -36,6 +36,24 @@
     border-bottom-color: var(--primary-color) !important;
 }
 
+/* Mobile: reduce font size and spacing */
+@media (max-width: 768px) {
+    .luxury-logo-text {
+        font-size: 24px;
+        letter-spacing: 1px;
+        padding-bottom: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .luxury-logo-text {
+        font-size: 18px;
+        letter-spacing: 0.5px;
+        padding-bottom: 4px;
+    }
+}
+
+
 /* Homepage: white logo over video */
 body.header-transparent .luxury-logo-text {
     color: #ffffff !important;
